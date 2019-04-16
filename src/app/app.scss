@@ -1,0 +1,157 @@
+@include media-breakpoint-down(sm) {
+    .modal-config {
+        .modal-wrapper {
+          border-radius: 10px 10px 10px 10px;
+          overflow: hidden;
+          top: 25%;
+          left: 10%;
+          position: absolute;
+          width: 80%;
+          height: 45%;
+        }
+      }
+    }
+    @keyframes fadeInBlur {
+        from {
+            -webkit-filter: blur(0px);
+            -moz-filter: blur(0px);
+            -o-filter: blur(0px);
+            -ms-filter: blur(0px);
+            filter: blur(0px);
+        }
+      
+        to {
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+      }
+
+      @keyframes fadeOutBlur {
+        from {
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+      
+        to {
+            -webkit-filter: blur(0px);
+            -moz-filter: blur(0px);
+            -o-filter: blur(0px);
+            -ms-filter: blur(0px);
+            filter: blur(0px);
+        }
+      }
+
+      .fadeInBlur {
+        -webkit-animation: fadeInBlur ease-in-out 1; 
+        animation: fadeInBlur ease-in-out 1;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+      } 
+
+      .fadeOutBlur {
+        -webkit-animation: fadeOutBlur ease-in-out 1; 
+        animation: fadeOutBlur ease-in-out 1;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-duration: 200ms;
+        animation-duration: 200ms;
+      } 
+
+      .button{
+        color: map-get($colors, light);
+        background-color : map-get($colors, listooGreen);
+        border-radius: 10px 10px 10px 10px;
+      }
+
+      .buttonInvert{
+        color: map-get($colors, listooGreen);
+        background-color : map-get($colors, light);
+      }
+
+      .swiper-pagination-bullet-active{
+        background : map-get($colors, listooGreen);
+      }
+
+      .tabbar{
+        background-color: white !important;
+        box-shadow: 0px -1px 10px 0px #ddd !important;
+      }
+
+      .tab-button{
+        position: relative;
+        width: 33%; /*Because you only have 3 elements (100 divided by 3)*/
+        float: left; /*To get them next to each other if all else fails*/
+        color :map-get($colors, listooPink);
+        background-color:  white !important;
+        display :inline-block;
+        min-height: 0px !important;
+        margin-top : 15px;
+        margin-bottom : 15px;
+        padding: 6px 0px !important;
+        border-radius: 20px !important;
+        margin-left: 5px;
+        margin-right: 5px;
+        -moz-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+        -webkit-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+        -o-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+        box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+        filter:progid:DXImageTransform.Microsoft.Shadow(color=#d6d6d6, Direction=180, Strength=10);
+        -moz-border-radius: 20px;
+        -webkit-border-radius: 20px;
+        font-size : 12px !important;
+
+        ion-icon{
+          color : map-get($colors, listooPink) !important;
+          display: inline-block !important;
+          vertical-align: middle;
+          font-size : 22px !important;
+          padding-right: 10px !important;
+        }
+        span{
+          display: inline-block !important;
+          vertical-align: middle
+        }
+      }
+
+      .tab-button[aria-selected=true]{
+        color :white !important;
+        background-color: map-get($colors, listooPink) !important;
+
+        ion-icon{
+          color : white !important;
+        }
+      }
+      .ion-page > ion-content{
+        background-color: #fafafa;
+      }
+
+      a{
+        color : map-get($colors, listooPink) !important;
+        text-decoration: underline;
+    }
+
+    
+    .header-md >header-big >.headerContainer{
+      padding-top : 5vh !important;
+
+      ion-icon{
+          top: 8vh;
+      }
+
+  }
+
+  .header-md >header-small >.headerContainer{
+    padding-top : 1vh !important;
+}
+
+  .header-md::after{
+    background: none;
+  }

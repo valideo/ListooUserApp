@@ -1,0 +1,27 @@
+page-commandes {
+
+
+    ion-item{
+        background-color : transparent !important;
+        border: none !important;
+
+        ion-icon{
+            color : map-get($colors, listooGreen);
+            background-color : white;
+            -moz-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+            -webkit-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+            -o-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+            box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+            padding : 15px;
+            border-radius : 50px;
+        }
+
+        h2{
+            color : map-get($colors, listooPink);
+        }
+
+        .panierRecup{
+            color : map-get($colors, listooGreen);
+        }
+    }
+}

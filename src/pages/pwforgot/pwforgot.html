@@ -1,0 +1,16 @@
+<ion-header>
+    <header-big></header-big>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+      <p>Entrez votre email pour recevoir un lien de réinitialisation.</p>
+  
+      <ion-item>
+          <ion-input [(ngModel)]="email" type="email" placeholder="Adresse email"></ion-input>
+      </ion-item>
+  
+      <button ion-button full (click)="valid()">Valider</button>
+  
+  </ion-content>

@@ -1,0 +1,17 @@
+page-register {
+
+    text-align: center;
+
+    ion-label{
+        color : map-get($colors, listooPink )
+    }
+
+    ion-item{
+        background-color: transparent !important;
+    }
+
+    button{
+        margin-top : 5vh !important;
+    }
+
+}

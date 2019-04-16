@@ -1,0 +1,20 @@
+<ion-header>
+
+    <header-small></header-small>
+  
+  </ion-header>
+
+
+<ion-content padding>
+  <h2>Vos commandes</h2>
+  <ion-list>
+    <ion-item *ngFor="let item of ordersDetail" >
+      <ion-avatar item-start>
+        <ion-icon name="md-basket"></ion-icon>
+      </ion-avatar>
+      <h2>{{item.qtite}} panier réservé(s)</h2>
+      <p>{{item.fName}} {{item.sName}}</p>
+      <p class="panierRecup" *ngIf="item.isRecup" >Panier récupéré !</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

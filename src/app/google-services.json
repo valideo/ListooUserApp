@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "221087838147",
+    "firebase_url": "https://listoo-7a227.firebaseio.com",
+    "project_id": "listoo-7a227",
+    "storage_bucket": "listoo-7a227.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221087838147:android:7cd08f6b230099dd",
+        "android_client_info": {
+          "package_name": "io.listoResto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221087838147-4lnt7pht89o20ncs4leip4paj438rk46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsNu7SRwEHUD4VUsaf4mtYNqwL78UImWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221087838147-4lnt7pht89o20ncs4leip4paj438rk46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

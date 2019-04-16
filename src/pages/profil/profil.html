@@ -1,0 +1,58 @@
+<ion-header>
+
+    <header-small></header-small>
+  
+</ion-header>
+
+
+<ion-content padding>
+  <h1>Votre profil restaurateur</h1>
+
+  <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input disabled="{{isDisabled}}" [(ngModel)]="sName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Prenom</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="fName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Téléphone</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="tel" type="tel"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Nom de l'établissement</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="restoName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Adresse</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="address" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Ville</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="city" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Code postal</ion-label>
+        <ion-input disabled="{{isDisabled}}" [(ngModel)]="zip" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Type de restaurant</ion-label>
+      <ion-select disabled="{{isDisabled}}" [(ngModel)]="restoType" multiple="false" cancelText="Annuler"
+        okText="Valider">
+        <ion-option  value="burger">Burger</ion-option>
+        <ion-option  value="pizza">Pizza</ion-option>
+        <ion-option  value="jap">Japonesa</ion-option>
+        <ion-option  value="acai">Açai</ion-option>
+        <ion-option  value="healthy">Saudavel</ion-option>
+      </ion-select>
+    </ion-item>
+  
+    <button ion-button full (click)="editInfos()">{{btnText}}</button>
+    <button ion-button full *ngIf="isDisabled" (click)="disconnect()">Se déconnecter</button>
+
+</ion-content>
