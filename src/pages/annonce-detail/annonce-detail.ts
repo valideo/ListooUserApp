@@ -75,10 +75,23 @@ export class AnnonceDetailPage {
     },err =>{
 
     });
+    var startHourstring = this.startHour.toLocaleTimeString('es-CO');
+    var ext = "";
+    if(startHourstring.indexOf("p") > 1)
+      ext = "pm"
+    else
+      ext = "am"
+    startHourstring = startHourstring.substring(0, startHourstring.length - 9) + ext;
 
-    this.horaires = this.startHour.toLocaleTimeString().substring(0, this.startHour.toLocaleTimeString().length - 3) + " - " + this.endHour.toLocaleTimeString().substring(0, this.endHour.toLocaleTimeString().length - 3);
+    var endHourString = this.endHour.toLocaleTimeString('es-CO');
+    if(endHourString.indexOf("p") > 1)
+      ext = "pm"
+    else
+      ext = "am"
+    endHourString = endHourString.substring(0, endHourString.length - 9) + ext;
+
+    this.horaires = startHourstring + " - " + endHourString;
     
-
   }
 
   completeOrder(){
@@ -134,8 +147,14 @@ export class AnnonceDetailPage {
             console.log(err);
           });
         }
-        else
-          this.apiProvider.presentToast("La quantité sélectionée n'est plus disponible.")
+        else{
+          const alert = this.alertCtrl.create({
+            message: "La cantidad seleccionada no esta disponible.",
+            buttons: ['Ok']
+          });
+        
+          alert.present();
+        }
       },err =>{
   
       });
@@ -149,7 +168,7 @@ export class AnnonceDetailPage {
   }
 
   addQtite(){
-    if(this.qtiteSelected < 10 && this.qtiteSelected < this.qtiteLeft)
+    if(this.qtiteSelected < this.qtiteLeft)
       this.qtiteSelected += 1;
     
     this.orderTotal =  this.initialPrice*0.3*this.qtiteSelected;

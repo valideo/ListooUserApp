@@ -176,6 +176,36 @@ page-annonces {
               font-size : 2rem;
             }
           }
+
+          .card-reduction{
+            font-size: 1.3em;
+            position: absolute;
+            bottom: 8%;
+            left: 52%;
+            width: 100%;
+            z-index:99;   
+            padding: 1% 5%;
+
+            h2{
+              color: map-get($colors, listooPink) !important;
+              font-size : 1.5rem;
+            }
+          }
+
+          .card-qtite{
+            font-size: 1.3em;
+            position: absolute;
+            bottom: 40%;
+            left: 0%;
+            width: 100%;
+            z-index:99;   
+            padding: 1% 5%;
+            color: map-get($colors, listooGreen) !important;
+            font-size : 1.5rem;
+          }
+          .card-qtite.zero{
+            color: map-get($colors, listooPink) !important;
+          }
       }
     }
 }

@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="shadowed">
 
   <header-small></header-small>
 
@@ -40,13 +40,16 @@
       (ionCancel)="hideSearchBar($event)">
     </ion-searchbar>
   </div>
-  <p *ngIf="annoncesDetail.length <= 0" >Aucun panier n'est disponible auhjourd'hui pour le moment.</p>
+  <p *ngIf="annoncesDetail.length <= 0" >{{noPanierText}}</p>
   <ion-list>
     <ion-card *ngFor="let annonce of annoncesDetail" (click)="goToDetail(annonce)">
       <div class="imgWrap"><img src="http://5.51.150.55:8080/uploads/{{annonce.piUrl}}"/></div>
       <div class="card-title">{{annonce.restoName}}</div>
       <div class="card-subtitle">{{annonce.restoType}}</div>
+      <div *ngIf="annonce.qtiteLeft > 0"  class="card-qtite">{{annonce.qtiteLeft}} paquetes</div>
+      <div *ngIf="annonce.qtiteLeft <= 0"  class="card-qtite zero">¡ Agotado !</div>
       <div class="card-place"><ion-icon name="ios-pin-outline"></ion-icon> {{annonce.address}}</div>
+      <div class="card-reduction"><h2>-70%</h2></div>
       <div class="card-price"><h2>$ {{annonce.initialPrice}}</h2><h2>$ {{annonce.price}}</h2></div>
     </ion-card>
 </ion-list>

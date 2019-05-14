@@ -4,6 +4,10 @@ page-annonce-detail {
         color : map-get($colors, listooGreen );
     }
 
+    .agotado{
+        background-color: map-get($colors, listooPink ) !important;
+    }
+
     #warning{
         padding: 10px 30px;
 

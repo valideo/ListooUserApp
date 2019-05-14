@@ -16,6 +16,7 @@ export class AnnoncesPage {
   categoriesArray : any = [];
   showSB : boolean = false;
   searchString : string = "";
+  noPanierText : string = "Ningún paquete disponible por el momento."
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider : ApiProvider, private alertCtrl : AlertController, private events : Events) {
 
@@ -30,11 +31,23 @@ export class AnnoncesPage {
           var type = this.getTypeName( dataResto["restoType"]);
           var address = dataResto["address"] + ", " + dataResto["city"];
           var picName = annonce["piUrl"].substring(1, annonce["piUrl"].length-1);
-          var detailObject = { idAnnonce : annonce["id"], idUserResto : annonce["idRestoUser"] ,restoName : dataResto["restoName"], typeValue : dataResto["restoType"], restoType : type, address : address, tel : dataResto["tel"], piUrl : picName, startHour : annonce["startHour"], endHour : annonce["endHour"], price :  annonce["price"]*0.3, initialPrice : annonce["price"] , qtite :  annonce["qtite"], desc : annonce["desc"] };
-
-          this.checkFilters(detailObject).then(data =>{
-            if(data == true)
-              this.annoncesDetail.push(detailObject);
+          var qtiteLeft = 0;
+          this.apiProvider.apiGetCommandesByAnnonce(annonce["id"]).then(data =>{
+      
+            var nbReserved = 0;
+            var orders : any = data;
+            orders.forEach(element => {
+              nbReserved += element["qtite"]
+            });
+            qtiteLeft = annonce["qtite"] - nbReserved;
+            var detailObject = { idAnnonce : annonce["id"], idUserResto : annonce["idRestoUser"] ,restoName : dataResto["restoName"], typeValue : dataResto["restoType"], restoType : type, address : address, tel : dataResto["tel"], piUrl : picName, startHour : annonce["startHour"], endHour : annonce["endHour"], price :  (annonce["price"]*0.3).toLocaleString('es-CO'), initialPrice : (annonce["price"]).toLocaleString('es-CO') , qtite :  annonce["qtite"], desc : annonce["desc"], qtiteLeft : qtiteLeft };
+            this.checkFilters(detailObject).then(data =>{
+              if(data == true)
+                this.annoncesDetail.push(detailObject);
+            });
+            console.log(this.annoncesDetail)
+          },err =>{
+      
           });
           
         }, err =>{
@@ -67,12 +80,24 @@ export class AnnoncesPage {
           var type = this.getTypeName( dataResto["restoType"]);
           var address = dataResto["address"] + ", " + dataResto["city"];
           var picName = dataAnnonce["piUrl"].substring(1, dataAnnonce["piUrl"].length-1);
-          var detailObject = { idAnnonce : dataAnnonce["id"], idUserResto : dataAnnonce["idRestoUser"] ,restoName : dataResto["restoName"], typeValue : dataResto["restoType"], restoType : type, address : address, tel : dataResto["tel"], piUrl : picName, startHour : dataAnnonce["startHour"], endHour : dataAnnonce["endHour"], price :  dataAnnonce["price"]*0.3, initialPrice : dataAnnonce["price"] , qtite :  dataAnnonce["qtite"], desc : dataAnnonce["desc"] };
-          this.checkFilters(detailObject).then(data =>{
-            if(data == true)
-              this.annoncesDetail.push(detailObject);
+          var qtiteLeft = 0;
+          this.apiProvider.apiGetCommandesByAnnonce(dataAnnonce["id"]).then(data =>{
+      
+            var nbReserved = 0;
+            var orders : any = data;
+            orders.forEach(element => {
+              nbReserved += element["qtite"]
+            });
+            qtiteLeft = dataAnnonce["qtite"] - nbReserved;
+            var detailObject = { idAnnonce : dataAnnonce["id"], idUserResto : dataAnnonce["idRestoUser"] ,restoName : dataResto["restoName"], typeValue : dataResto["restoType"], restoType : type, address : address, tel : dataResto["tel"], piUrl : picName, startHour : dataAnnonce["startHour"], endHour : dataAnnonce["endHour"], price :  (dataAnnonce["price"]*0.3).toLocaleString('es-CO'), initialPrice : (dataAnnonce["price"]).toLocaleString('es-CO') , qtite :  dataAnnonce["qtite"], desc : dataAnnonce["desc"], qtiteLeft : qtiteLeft };
+            this.checkFilters(detailObject).then(data =>{
+              if(data == true)
+                this.annoncesDetail.push(detailObject);
+            });
+            console.log(this.annoncesDetail)
+          },err =>{
+      
           });
-
         }, err =>{
           console.log(err);
         });
@@ -94,18 +119,20 @@ export class AnnoncesPage {
           orders.forEach(element => {
             nbReserved += element["qtite"]
           });
+          this.noPanierText = "Ningún paquete disponible por el momento.";
           var toReturn = true;
           if(this.paniersDispo){
   
             if(nbReserved >= annonceToCheck["qtite"]){
               toReturn = false;
             }
-  
+          this.noPanierText = "Ningún resultado.";
           }
           if(this.categoriesArray["length"] > 0){
             if(this.categoriesArray.indexOf(annonceToCheck["typeValue"]) < 0){
               toReturn = false;
             }
+            this.noPanierText = "Ningún resultado.";
           }
           resolve(toReturn);
         });
@@ -174,7 +201,7 @@ export class AnnoncesPage {
     if(type == "pizza")
       return "Pizza";
     else if(type == "burger")
-      return "Burger";
+      return "Hamburguesería";
     else if(type == "jap")
       return "Japonesa";
     else if(type == "pol")

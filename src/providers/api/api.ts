@@ -79,11 +79,11 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         if(err.status == 400){
-          this.presentToast('Champs incorrects');
+          this.presentAlertConnexion('Algunos campos son incorrectos.');
       }else if(err.status == 403 || err.status == 404){
-           this.presentToast('Identifiant ou mot de passe incorrect');
+           this.presentAlertConnexion('Email o contrasena incorrecta');
       }else{
-           this.presentToast('Erreur serveur');
+        this.presentAlertConnexion('Ha acontecido un error en el servidor');
       }
       });
     });
@@ -103,6 +103,7 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         reject(err);
+        this.presentAlertConnexion('Ha acontecido un error en el servidor');
       });
     });
   }
@@ -117,7 +118,7 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         if(err.status == 500){
-          this.presentToast('Impossible d\'envoyer l\'email de réinitialisation');
+          this.presentAlertConnexion('Es imposible enviar el mail de reinicializacion.');
       }
       });
     });
@@ -132,14 +133,14 @@ export class ApiProvider {
     return new Promise((resolve) => {
       this.http.post(this.apiBaseUrl+"users/registerUser/", postData, options).subscribe(data => {
         resolve(data);
-        this.presentToast("Votre compte a bien été créé");
+        this.presentAlertOK("Si cuenta ha sido creada.");
       }, err => {
         if(err.status == 400){
-          this.presentToast('Champs incorrects');
+          this.presentAlertConnexion('Algunos campos son incorrectos.');
       }else if(err.status == 403 || err.status == 404){
-           this.presentToast('Identifiant ou mot de passe incorrect');
+          this.presentAlertConnexion('Algunos campos son incorrectos.');
       }else{
-           this.presentToast('Erreur serveur');
+          this.presentAlertConnexion('Ha acontecido un error en el servidor');
       }
       });
     });
@@ -156,7 +157,7 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         console.log(err);
-        this.presentToast('Impossible de charger les informations');
+        this.presentAlertOK("imposible de cargar la informacion, verifique su conexion.");
       });
     });
   }
@@ -172,7 +173,7 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         console.log(err);
-        this.presentToast('Impossible de charger les informations');
+        this.presentAlertOK("imposible de cargar la informacion, verifique su conexion.");
       });
     });
   }
@@ -188,7 +189,7 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         console.log(err);
-        this.presentToast('Impossible de charger les informations');
+        this.presentAlertOK("imposible de cargar la informacion, verifique su conexion.");
       });
     });
   }
@@ -300,9 +301,8 @@ export class ApiProvider {
     return new Promise((resolve) => {
       this.http.post(this.apiBaseUrl+"commande/create/", postData, options).subscribe(data => {
         resolve(data);
-        this.presentToast("Votre commande a bien été passée");
       }, err => {
-          this.presentToast('Impossible de passer la commande');
+        this.presentAlertOK("No se ha podido registrar el pedido.");
       });
     });
   }

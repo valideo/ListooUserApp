@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="shadowed">
 
   <ion-icon (click)="goBack()" name="arrow-round-back"></ion-icon>
   <header-small></header-small>
@@ -52,6 +52,14 @@
       </tr>
     </table>  
   </div>
+  <div id="warning" *ngIf="!detailOrder">
+    <table>
+      <tr>
+        <td><ion-icon name="ios-alert"></ion-icon></td>
+        <td><p>Recuerda que debes recoger tu paquete(s) directamente en el restaurante en el horario indicado.</p></td>
+      </tr>
+    </table>  
+  </div>
   <div class="description" *ngIf="!detailOrder">
     <h3>Descripción :</h3>
     <p>{{desc}}</p>
@@ -60,7 +68,8 @@
     <ion-icon name="ios-pin-outline"><h3>  Dirección :</h3></ion-icon>
     <p>{{address}}</p>
   </div>
-  <button *ngIf="!detailOrder"  full ion-button (click)="completeOrder()">Reservar una o más canastas</button>
+  <button *ngIf="!detailOrder && qtiteLeft > 0"  full ion-button (click)="completeOrder()">Reservar una o más canastas</button>
+  <button class="agotado" *ngIf="!detailOrder && qtiteLeft <= 0"  full ion-button>¡ Agotado !</button>
 
 </ion-content>
 

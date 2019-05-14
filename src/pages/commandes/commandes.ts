@@ -39,7 +39,7 @@ export class CommandesPage {
             var msLeft = endHour.getTime() - this.today.getTime();
             var timeLeft = new Date(msLeft).getHours() -1 + ' heures ' + new Date(msLeft).getMinutes() + ' minutes';
             var picName = dataAnnonce["piUrl"].substring(1, dataAnnonce["piUrl"].length-1);
-            var finalPrice = element["qtite"] * dataAnnonce["price"]*0.3;
+            var finalPrice = (element["qtite"] * dataAnnonce["price"]*0.3).toLocaleString('es-CO');
 
             var address = dataRestoUser["address"] + ", " + dataRestoUser["city"];
             var order = {id : element["id"], orderDateTime : element["orderDateTime"], idUserResto : dataAnnonce["idRestoUser"],  isRecup : element["isRecup"], qtite : element["qtite"], restoName : dataRestoUser["restoName"], restoType : dataRestoUser["restoType"], piUrl : picName, finalPrice : finalPrice, timeLeft : timeLeft, isExpire : isExpire, address : address, tel : dataRestoUser["tel"], startHour : dataAnnonce["startHour"], endHour : dataAnnonce["endHour"], price :  dataAnnonce["price"]*0.3, initialPrice : dataAnnonce["price"] , desc : dataAnnonce["desc"]};
