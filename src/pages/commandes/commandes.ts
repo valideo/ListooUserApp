@@ -1,8 +1,8 @@
+import { AnnonceDetailPage } from './../annonce-detail/annonce-detail';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-commandes',
   templateUrl: 'commandes.html',
@@ -11,27 +11,68 @@ export class CommandesPage {
 
   orders : any = [];
   ordersDetail : any = [];
+  ordersDetailSorted = [];
+  today : Date = new Date();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider : ApiProvider) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider : ApiProvider, private events : Events) {
+    events.subscribe('commandesOk', () => {
+      this.ordersDetail.sort(function (a, b) {
+        if (a.name > b.name) return 1;
+        if (a.name < b.name) return -1;
+        return 0;
+      });
+    });
   }
 
   init(){
     this.apiProvider.apiGetCommandes().then(data =>{
-      this.ordersDetail = [];
+      this.ordersDetail = new Array();
       this.orders = data;
       this.orders.forEach(element => {
-        this.apiProvider.apiLoadUser(parseInt(element["idUser"])).then(dataUser =>{
-          var order = {isRecup : element["isRecup"], qtite : element["qtite"], fName : dataUser["fName"], sName : dataUser["sName"], date : element["orderDateTime"]};
-          this.ordersDetail.push(order);
+        this.apiProvider.apiGetAnnonce(parseInt(element["idAnnonce"])).then(dataAnnonce =>{
+          this.apiProvider.apiLoadResto(dataAnnonce["idRestoUser"]).then(dataRestoUser =>{
+            var isExpire = false;
+            var endHour = new Date(dataAnnonce["endHour"]);
+            if(element["isRecup"] == false && this.today > endHour)
+              isExpire = true;
+            
+            var msLeft = endHour.getTime() - this.today.getTime();
+            var timeLeft = new Date(msLeft).getHours() -1 + ' heures ' + new Date(msLeft).getMinutes() + ' minutes';
+            var picName = dataAnnonce["piUrl"].substring(1, dataAnnonce["piUrl"].length-1);
+            var finalPrice = element["qtite"] * dataAnnonce["price"]*0.3;
+
+            var address = dataRestoUser["address"] + ", " + dataRestoUser["city"];
+            var order = {id : element["id"], orderDateTime : element["orderDateTime"], idUserResto : dataAnnonce["idRestoUser"],  isRecup : element["isRecup"], qtite : element["qtite"], restoName : dataRestoUser["restoName"], restoType : dataRestoUser["restoType"], piUrl : picName, finalPrice : finalPrice, timeLeft : timeLeft, isExpire : isExpire, address : address, tel : dataRestoUser["tel"], startHour : dataAnnonce["startHour"], endHour : dataAnnonce["endHour"], price :  dataAnnonce["price"]*0.3, initialPrice : dataAnnonce["price"] , desc : dataAnnonce["desc"]};
+
+            this.ordersDetail.push(order);
+          }, err =>{
+
+          });
         }, err =>{
 
         });
       });
-      console.log(this.ordersDetail);
+      this.events.publish('commandesOk');
     }, err =>{
 
     });
+  }
+
+  compare(a, b) {
+    const idA = a["id"];
+    const idB = b["id"];
+  
+    let comparison = 0;
+    if (idA > idB) {
+      comparison = 1;
+    } else if (idA < idB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+  goToDetail(annonce){
+      this.navCtrl.push(AnnonceDetailPage, {detailOrder : true, annonce : annonce});
   }
 
   ionViewWillEnter(){

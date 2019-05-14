@@ -3,10 +3,10 @@
 </ion-header>
 
 <ion-content padding *ngIf="!isLoggedIn" >
-  <p>Lorem ipsum dolor sit amet consectetur !</p>
+  <p>¡ Haciendo bien a tu billetera y al medio ambiente !</p>
   <div class="divider"></div>
-  <button ion-button full (click)="goToRegister()">S'inscrire</button>
- <!--<button ion-button id="fbBtn" full>S'inscrire avec Facebook</button>--> 
+  <button ion-button full (click)="goToRegister()">Crear cuenta</button>
+  <button ion-button id="fbBtn" (click)="loginFb()" full>Continuar con Facebook</button>
   <div class="divider"></div>
-  <p>Déjà inscrit ? <a (click)="goToLogin()">Connectez vous !</a></p>
+  <p> ¿Ya está registrado? <a (click)="goToLogin()">¡Inicie sesión!</a></p>
 </ion-content>

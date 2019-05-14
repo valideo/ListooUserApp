@@ -6,53 +6,48 @@
 
 
 <ion-content padding>
-  <h1>Votre profil restaurateur</h1>
-
-  <ion-item>
-      <ion-label floating>Nom</ion-label>
-      <ion-input disabled="{{isDisabled}}" [(ngModel)]="sName" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Prenom</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="fName" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Email</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="email" type="email"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Téléphone</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="tel" type="tel"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Nom de l'établissement</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="restoName" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Adresse</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="address" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Ville</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="city" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Code postal</ion-label>
-        <ion-input disabled="{{isDisabled}}" [(ngModel)]="zip" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Type de restaurant</ion-label>
-      <ion-select disabled="{{isDisabled}}" [(ngModel)]="restoType" multiple="false" cancelText="Annuler"
-        okText="Valider">
-        <ion-option  value="burger">Burger</ion-option>
-        <ion-option  value="pizza">Pizza</ion-option>
-        <ion-option  value="jap">Japonesa</ion-option>
-        <ion-option  value="acai">Açai</ion-option>
-        <ion-option  value="healthy">Saudavel</ion-option>
-      </ion-select>
-    </ion-item>
+  <h1>Perfil:</h1>
+  <p>Detalles de su perfil : </p>
+    <ion-list>
+          <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <ion-item>
+                      <ion-label stacked>Nombre :</ion-label>
+                      <ion-input disabled="{{isDisabled}}" [(ngModel)]="fName" placeholder="Carlos" type="text"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                      <ion-label stacked>Apellido :</ion-label>
+                      <ion-input disabled="{{isDisabled}}" [(ngModel)]="sName" placeholder="Ruiz" type="text"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          <ion-item>
+              <ion-label stacked>Email :</ion-label>
+              <ion-input disabled="{{isDisabled}}" [(ngModel)]="email" placeholder="carlosruiz@gmail.com" type="email"></ion-input>
+          </ion-item>
+        <ion-item>
+            <ion-label stacked>Fecha de nacimiento:</ion-label>
+            <ion-input disabled="{{isDisabled}}" [(ngModel)]="age" type="number"></ion-input>
+        </ion-item>
+          <ion-item>
+              <ion-label stacked>Teléfono:</ion-label>
+              <ion-input disabled="{{isDisabled}}" disabled="{{isDisabled}}" [(ngModel)]="tel" placeholder="300 123 45 67" type="tel"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label stacked>Dirección :</ion-label>
+              <ion-input disabled="{{isDisabled}}" [(ngModel)]="address" placeholder="Cra 7 # 91 - 72" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label stacked>Ciudad :</ion-label>
+              <ion-input disabled="{{isDisabled}}" [(ngModel)]="city" placeholder="Bogota" type="text"></ion-input>
+          </ion-item>
+          </ion-list>
   
     <button ion-button full (click)="editInfos()">{{btnText}}</button>
-    <button ion-button full *ngIf="isDisabled" (click)="disconnect()">Se déconnecter</button>
+    <button ion-button full *ngIf="isDisabled" (click)="disconnect()">Desconectarse</button>
 
 </ion-content>

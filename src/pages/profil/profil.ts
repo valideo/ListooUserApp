@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 
-@IonicPage()
 @Component({
   selector: 'page-profil',
   templateUrl: 'profil.html',
@@ -18,11 +17,9 @@ export class ProfilPage {
   tel : string = "";
   address : string = "";
   city : string = "";
-  zip : string = "";
-  restoName : string = "";
-  restoType : string = "";
+  age : number = 10;
   isDisabled : boolean = true;
-  btnText : string = "Modifier les informations"
+  btnText : string = "Modificar la información"
 
   constructor(public app : App, public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, public nativeStorage : NativeStorage) {
     this.loadInfos();
@@ -36,9 +33,7 @@ export class ProfilPage {
       this.tel = data["tel"];
       this.address = data["address"];
       this.city = data["city"];
-      this.zip = data["zip"];
-      this.restoName = data["restoName"];
-      this.restoType = data["restoType"];
+      this.age = data["age"];
     }, err =>{
 
     });
@@ -56,15 +51,15 @@ export class ProfilPage {
   editInfos(){
     if(this.isDisabled == true){
       this.isDisabled = false;
-      this.btnText = "Valider les informations";
+      this.btnText = "Guardar los cambios";
     }else{
-      this.apiProvider.apiUpdateMe(this.email, this.sName, this.fName, this.address, this.city, this.zip, this.tel, this.restoName, this.restoType).then(data=>{
+      this.apiProvider.apiUpdateMe(this.email, this.sName, this.fName, this.address, this.city, this.tel, this.age).then(data=>{
         this.isDisabled = true;
-        this.btnText = "Modifier les informations";
+        this.btnText = "Modificar la información";
         this.navCtrl.setRoot(ProfilPage);
       }, err =>{
         this.isDisabled = true;
-        this.btnText = "Modifier les informations";
+        this.btnText = "Modificar la información";
         this.apiProvider.presentToast("Impossible de mettre à jour les informations.")
       });
     }

@@ -4,19 +4,28 @@ import { TabsPage } from './../tabs/tabs';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
 
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
 
-  email : string = "";
-  password : string = "";
+  email : string = "wan.da@hotmail.com";
+  password : string = "test1234";
+  shouldHeight = "100%" ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, public nativeStorage : NativeStorage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, public nativeStorage : NativeStorage, private keyboard : Keyboard) {
+    keyboard.onKeyboardShow()
+    .subscribe(data => {
+       this.shouldHeight = "-600%";
+    });
+    keyboard.onKeyboardHide()
+    .subscribe(data => {
+       this.shouldHeight = "100%";
+    });
   }
 
   clickLogin(){
@@ -41,6 +50,7 @@ export class LoginPage {
       }
     });
   }
+
 
   forgotPassClick(){
     this.navCtrl.push(PwforgotPage);

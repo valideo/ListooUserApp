@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>221087838147-5vqnhtdpg7pbkdq88kkq3rhfkif9bmof.apps.googleusercontent.com</string>
+	<string>221087838147-inv8i91bt92fckars0p4d41jj657egpq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.221087838147-5vqnhtdpg7pbkdq88kkq3rhfkif9bmof</string>
+	<string>com.googleusercontent.apps.221087838147-inv8i91bt92fckars0p4d41jj657egpq</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>io.listoResto</string>
+	<string>io.listooUser</string>
 	<key>PROJECT_ID</key>
 	<string>listoo-7a227</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:221087838147:ios:7cd08f6b230099dd</string>
+	<string>1:221087838147:ios:b528a6e8d3d5831b</string>
 	<key>DATABASE_URL</key>
 	<string>https://listoo-7a227.firebaseio.com</string>
 </dict>

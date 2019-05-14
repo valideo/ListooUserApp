@@ -21,16 +21,19 @@
     "@angular/platform-browser": "5.0.0",
     "@angular/platform-browser-dynamic": "5.0.0",
     "@ionic-native/core": "4.3.2",
+    "@ionic-native/facebook": "^4.20.0",
     "@ionic-native/fcm": "^4.20.0",
     "@ionic-native/file-transfer": "^4.20.0",
     "@ionic-native/firebase": "^4.20.0",
     "@ionic-native/image-picker": "^4.20.0",
+    "@ionic-native/keyboard": "^4.12.0",
+    "@ionic-native/launch-navigator": "^4.20.0",
     "@ionic-native/local-notifications": "^4.20.0",
     "@ionic-native/native-storage": "^4.20.0",
     "@ionic-native/onesignal": "^4.20.0",
     "@ionic-native/photo-library": "^4.20.0",
     "@ionic-native/splash-screen": "4.3.2",
-    "@ionic-native/status-bar": "4.3.2",
+    "@ionic-native/status-bar": "^4.20.0",
     "@ionic/storage": "2.1.3",
     "cordova-android": "7.1.4",
     "cordova-browser": "5.0.4",
@@ -40,13 +43,16 @@
     "cordova-plugin-fcm-with-dependecy-updated": "2.4.0",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-file-transfer": "1.7.1",
+    "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-ionic-webview": "^1.2.1",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-nativestorage": "2.3.2",
     "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-telerik-imagepicker": "2.3.2",
     "cordova-plugin-whitelist": "^1.3.1",
     "cordova-windows": "6.0.1",
+    "firebase": "^4.12.1",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
@@ -54,14 +60,15 @@
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.4.0",
     "sw-toolbox": "3.6.0",
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "^5.0.4",
     "ws": "^3.3.2",
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.0",
+    "@ionic/app-scripts": "^3.1.11",
     "typescript": "2.4.2"
   },
-  "description": "An Ionic project",
+  "description": "~Listoo App for users",
   "cordova": {
     "plugins": {
       "ionic-plugin-keyboard": {},
@@ -70,18 +77,22 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-nativestorage": {},
-      "cordova-plugin-telerik-imagepicker": {
-        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To access your pictures"
-      },
-      "cordova-plugin-file-transfer": {},
       "cordova-plugin-fcm-with-dependecy-updated": {},
-      "cordova-plugin-local-notification": {}
+      "cordova-plugin-local-notification": {},
+      "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+        "GOOGLE_API_KEY_FOR_ANDROID": "{AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw}",
+        "OKHTTP_VERSION": "3.12.0"
+      },
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-facebook4": {
+        "APP_ID": "685935318528402",
+        "APP_NAME": "listoo"
+      }
     },
     "platforms": [
       "windows",
       "ios",
-      "browser",
-      "android"
+      "browser"
     ]
   }
 }

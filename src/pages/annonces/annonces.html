@@ -1,0 +1,55 @@
+<ion-header>
+
+  <header-small></header-small>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h6>Establecimientos disponibles :</h6>
+  <div class="filterContainer">
+    <table *ngIf="!showSB" >
+    <tr>
+      <td>
+          <ion-icon name="ios-search" (click)="showSearchBar()"></ion-icon>
+      </td>
+      <td>
+          <ion-icon name="md-funnel" (click)="showFilters()"></ion-icon>
+      </td>
+      <td>
+          <ion-item><ion-toggle [(ngModel)]="paniersDispo" (ionChange)="paniersDispoChanged($event)" checked="false"></ion-toggle></ion-item>
+      </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Buscar</p>
+        </td>
+        <td>
+            <p>Filtrar</p>
+        </td>
+        <td>
+            <p>Canastas disponibles</p>
+        </td>
+      </tr>
+    </table>
+    <ion-searchbar *ngIf="showSB" 
+      [(ngModel)]="searchString"
+      [showCancelButton]="true"
+      cancelButtonText = "annuler"
+      (ionInput)="onInput($event)"
+      (ionCancel)="hideSearchBar($event)">
+    </ion-searchbar>
+  </div>
+  <p *ngIf="annoncesDetail.length <= 0" >Aucun panier n'est disponible auhjourd'hui pour le moment.</p>
+  <ion-list>
+    <ion-card *ngFor="let annonce of annoncesDetail" (click)="goToDetail(annonce)">
+      <div class="imgWrap"><img src="http://5.51.150.55:8080/uploads/{{annonce.piUrl}}"/></div>
+      <div class="card-title">{{annonce.restoName}}</div>
+      <div class="card-subtitle">{{annonce.restoType}}</div>
+      <div class="card-place"><ion-icon name="ios-pin-outline"></ion-icon> {{annonce.address}}</div>
+      <div class="card-price"><h2>$ {{annonce.initialPrice}}</h2><h2>$ {{annonce.price}}</h2></div>
+    </ion-card>
+</ion-list>
+
+
+</ion-content>

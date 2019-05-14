@@ -1,8 +1,8 @@
+import { AnnoncesPage } from './../annonces/annonces';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from './../../providers/api/api';
 import { ProfilPage } from './../profil/profil';
 import { CommandesPage } from './../commandes/commandes';
-import { PanierPage } from './../panier/panier';
 import { Component } from '@angular/core';
 import { Events } from 'ionic-angular';
 
@@ -11,7 +11,7 @@ import { Events } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tab1Root = PanierPage;
+  tab1Root = AnnoncesPage;
   tab2Root = CommandesPage;
   tab3Root = ProfilPage;
   isBlured : string = "no";

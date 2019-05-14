@@ -2,11 +2,16 @@ page-home {
     text-align: center;
 
     ion-content{
-    background-image: url("../assets/imgs/ListooBagBG.png");
+    background-image: url("../assets/imgs/listooBagBG.png");
     background-position: bottom; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: contain; /* Resize the background image to cover the entire container */
     background-color : #f5f5f5 !important;
+
+    .scroll-content{
+        
+        padding : 0% 10% !important;
+        }
 }
 
     .headerContainer > ion-icon{
@@ -35,9 +40,4 @@ page-home {
         background-color : #3A559F !important;
         margin-top : 5vh;
     }
-
-    .tabbar.show-tabbar{
-        display: none !important;
-    }
-
 }

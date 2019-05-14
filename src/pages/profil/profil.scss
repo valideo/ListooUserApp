@@ -1,9 +1,22 @@
 page-profil {
 
-    text-align: center;
+    .item-select-disabled ion-label{
+        opacity : 1 !important;    
+    }
 
+    h1{
+        text-align: center;
+        padding: 0px !important;
+    }
+    p{
+        text-align: left;
+        margin-left : 15px;
+        font-size : 1.7rem;
+        border-bottom: solid 0.5px map-get($colors, listooPink );
+        display: inline-block;
+    }
     ion-label{
-        color : map-get($colors, listooPink )
+        color : map-get($colors, listooPink ) !important;
     }
 
     ion-item{
@@ -18,6 +31,12 @@ page-profil {
             border-bottom: none !important;
         }
     }
+
+    ion-grid ion-item{
+        margin-top : 0vh !important;
+        margin-bottom : 0vh !important;
+    }
+    ion-grid{margin : 0px !important; padding : 0px !important}
 
     button{
         margin-top : 5vh !important;

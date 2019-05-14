@@ -22,12 +22,12 @@ export class MyApp {
         events.subscribe('tokenOk', () => {
           this.apiProvider.apiLoadProfile().then(data =>{
             console.log(data["id"]);
-            this.fcm.subscribeToTopic('resto'+data["id"]);
+            this.fcm.subscribeToTopic('user'+data["id"]);
           }, err =>{
             console.log(err);
           });
         });
-        this.fcm.subscribeToTopic('resto');
+        this.fcm.subscribeToTopic('users');
         this.fcm.onTokenRefresh().subscribe(token => {
           console.log(token);
         });
@@ -42,6 +42,7 @@ export class MyApp {
         });
       }
       statusBar.styleDefault();
+      statusBar.backgroundColorByHexString("#D6D6D6");
     });
   }
 }

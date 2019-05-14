@@ -1,0 +1,109 @@
+<ion-header>
+
+  <ion-icon (click)="goBack()" name="arrow-round-back"></ion-icon>
+  <header-small></header-small>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="!finishOrder" >
+
+  <ion-card>
+    <div class="imgWrap">
+      <img src="http://5.51.150.55:8080/uploads/{{piUrl}}"/>
+    </div>
+    <div class="picText">
+      <h1>{{restoName}}</h1>
+      <p>{{restoType}}</p>
+    </div>
+    <div class=picPrice>
+      <h2>$ {{initialPrice}}</h2>
+      <h2>$ {{finalPrice}}</h2>
+    </div>
+    <ion-item style="padding-bottom: 0px !important">
+    <div class="contain border" *ngIf="!detailOrder" start>
+      <div><ion-icon name="ios-basket-outline"></ion-icon></div>
+      <p>{{qtiteLeft}} paquetes restantes</p>
+    </div>
+    <div class="contain" *ngIf="!detailOrder" end>
+      <div><ion-icon name="ios-time-outline"></ion-icon></div>
+      <p>{{horaires}}</p>
+    </div>
+    <div class="iconsBottom top" *ngIf="detailOrder">
+      <div><ion-icon name="ios-time-outline"></ion-icon></div>
+      <p>{{horaires}}</p>
+    </div>
+    <div class="iconsBottom btm" *ngIf="detailOrder" (click)="openMap()">
+      <div><ion-icon name="ios-pin-outline"></ion-icon></div>
+      <p>{{address}}</p>
+    </div>
+    </ion-item>
+    
+    <div *ngIf="detailOrder"  class="selectQtite qtiteOrder">
+      <h2>{{qtite}} Paquetes reservados</h2>
+    </div>
+  </ion-card>
+  <h2 *ngIf="detailOrder" id="total">Total : ${{orderTotalBil}}</h2>
+  <div id="warning" *ngIf="detailOrder">
+    <table>
+      <tr>
+        <td><ion-icon name="ios-alert"></ion-icon></td>
+        <td><p>El pago se realizará directamente en el establecimiento, al momento de recoger el pedido.</p></td>
+      </tr>
+    </table>  
+  </div>
+  <div class="description" *ngIf="!detailOrder">
+    <h3>Descripción :</h3>
+    <p>{{desc}}</p>
+  </div>
+  <div class="location" (click)="openMap()" *ngIf="!detailOrder">
+    <ion-icon name="ios-pin-outline"><h3>  Dirección :</h3></ion-icon>
+    <p>{{address}}</p>
+  </div>
+  <button *ngIf="!detailOrder"  full ion-button (click)="completeOrder()">Reservar una o más canastas</button>
+
+</ion-content>
+
+<ion-content padding *ngIf="finishOrder" >
+
+  <ion-card>
+    <div class="imgWrap">
+      <img src="http://5.51.150.55:8080/uploads/{{piUrl}}"/>
+    </div>
+    <div class="picText">
+      <h1>{{restoName}}</h1>
+      <p>{{restoType}}</p>
+    </div>
+    <div class=picPrice>
+        <h2>$ {{initialPrice}}</h2>
+        <h2>$ {{finalPrice}}</h2>
+    </div>
+    <ion-item style="padding-bottom: 0px !important">
+      <div class="iconsBottom top">
+          <div><ion-icon name="ios-time-outline"></ion-icon></div>
+          <p>{{horaires}}</p>
+      </div>
+      <div class="iconsBottom btm" (click)="openMap()">
+        <div><ion-icon name="ios-pin-outline"></ion-icon></div>
+        <p>{{address}}</p>
+      </div>
+      <div class="selectQtite">
+        <h2>Paquetes : </h2>
+        <div (click)="removeQtite()"><ion-icon name="ios-remove-outline"></ion-icon></div>
+        <p> {{qtiteSelected}} </p>
+        <div (click)="addQtite()"><ion-icon name="ios-add-outline"></ion-icon></div>
+      </div>
+    </ion-item> 
+  </ion-card> 
+  <div id="warning">
+    <table>
+      <tr>
+        <td><ion-icon name="ios-alert"></ion-icon></td>
+        <td><p>El pago se realizará directamente en el establecimiento, al momento de recoger el pedido.</p></td>
+      </tr>
+    </table>  
+  </div>
+
+  <button full ion-button (click)="completeOrder()">Terminar el pedido ($ {{orderTotal}})</button>
+
+</ion-content>

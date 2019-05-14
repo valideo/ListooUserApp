@@ -94,4 +94,18 @@
     <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
     <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="2.1.3" />
+    <plugin name="cordova-plugin-facebook4" spec="4.2.1">
+        <variable name="APP_ID" value="685935318528402" />
+        <variable name="APP_NAME" value="listoo" />
+    </plugin>
+    <allow-navigation href="http://192.168.63.113:8100" />
+    <allow-navigation href="http://192.168.111.1:8100" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^5.0.4">
+        <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw}" />
+        <variable name="OKHTTP_VERSION" value="3.12.0" />
+    </plugin>
+    <engine name="windows" spec="6.0.1" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="browser" spec="5.0.4" />
 </widget>

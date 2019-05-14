@@ -2,7 +2,6 @@ import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-pwforgot',
   templateUrl: 'pwforgot.html',

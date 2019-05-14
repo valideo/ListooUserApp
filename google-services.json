@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:221087838147:android:7cd08f6b230099dd",
         "android_client_info": {
-          "package_name": "io.listoResto"
+          "package_name": "io.listooUser"
         }
       },
       "oauth_client": [
@@ -30,6 +30,49 @@
             {
               "client_id": "221087838147-4lnt7pht89o20ncs4leip4paj438rk46.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "221087838147-inv8i91bt92fckars0p4d41jj657egpq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.listooUser"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221087838147:android:b528a6e8d3d5831b",
+        "android_client_info": {
+          "package_name": "io.listooUser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221087838147-4lnt7pht89o20ncs4leip4paj438rk46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsNu7SRwEHUD4VUsaf4mtYNqwL78UImWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221087838147-4lnt7pht89o20ncs4leip4paj438rk46.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "221087838147-inv8i91bt92fckars0p4d41jj657egpq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.listooUser"
+              }
             }
           ]
         }

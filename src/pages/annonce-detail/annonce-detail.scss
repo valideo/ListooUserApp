@@ -1,0 +1,250 @@
+page-annonce-detail {
+
+    h2#total{
+        color : map-get($colors, listooGreen );
+    }
+
+    #warning{
+        padding: 10px 30px;
+
+        td{
+            ion-icon{
+                font-size : 3rem;
+                margin-right: 10px;
+                color: map-get($colors, listooPink );
+            }
+
+            p{
+                text-align: left;
+            }
+        }
+    }
+
+    ion-header > ion-icon{
+        position: absolute !important;
+        font-size : 3rem !important;
+        width: 3rem !important;
+        text-align: center;
+        background-color: map-get($colors, listooPink );
+        color: white;
+        border-radius: 3rem;
+        left : 5% !important;
+        top : 4vh !important;
+    }
+    ion-header.header-md > ion-icon{
+        top : 2vh !important;
+    }
+
+    text-align: center;
+
+    ion-card{
+        border-radius: 10px !important;
+        -webkit-box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.2) !important;
+        -moz-box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.2) !important;
+        box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.2) !important;
+        margin-bottom : 3vh !important;
+        .picText{
+        text-align: center;
+        margin-top: -165px;
+        z-index:100;
+        position: absolute;
+        width: 85%;
+        
+            p, h1{
+                color: white;
+                padding-bottom: 0px;
+            }
+        } 
+            .picPrice{
+                text-align: center;
+                margin-top: -75px;
+                z-index:100;
+                position: absolute;
+                background-color : white;
+                width : 30%;
+                margin-left : 27.5%;
+                z-index: 99;   
+                padding: 2%;
+                border-radius: 10px;
+    
+                h2:first-child{
+                  color: map-get($colors, listooPink) !important;
+                  font-size : 1.5rem;
+                  text-decoration: line-through;
+                  padding-left: 2%;
+                }
+    
+                h2{
+                  color: map-get($colors, listooGreen) !important;
+                  font-size : 2rem;
+                }
+              }  
+        .imgWrap {
+            position:relative;
+
+            img{
+                height: 200px;
+                object-fit: cover;
+            }
+
+          }
+          
+          .imgWrap:before {
+            content:"";
+            position: absolute;
+            top:0;
+            left:0;
+            height:100%;
+            width:100%;
+            background: rgba(0,0,0,0.5);
+            z-index:99;
+          }
+    
+          ion-item{
+              padding-bottom : 20px !important;
+              padding-left : 0px !important;
+
+              .item-inner{
+                  padding-right: 0px !important;
+
+                  ion-label{
+                    margin : 0px !important;
+                  }
+              }
+          }
+
+          .contain{
+            position: relative;
+            width: 50%; /*Because you only have 3 elements (100 divided by 3)*/
+            float: left; /*To get them next to each other if all else fails*/
+            color : map-get($colors, listooGreen);
+            padding: 10px 0px !important;
+
+            p{
+                font-size : 1.2rem !important;
+                text-align: center;
+                color : map-get($colors, listooPink);
+                font-weight: bold;
+            }
+
+            ion-icon{
+            color : white;
+            background-color : map-get($colors, listooPink) !important;
+            padding: 7px 9px;
+            font-size : 2.3rem;
+            border-radius : 50px;
+            }
+        }
+
+        .iconsBottom{
+            position: relative;
+            color : map-get($colors, listooGreen);
+            padding: 10px 0px;
+
+            div{
+                display: inline-block;
+            }
+
+            p{
+                display: inline-block;
+                font-size : 12px !important;
+                text-align: center;
+                color : black;
+            }
+        }
+
+        .iconsBottom.top{
+            padding-bottom: 0px !important;
+        }
+        .iconsBottom.btm{
+            padding-top : 0px !important
+        }
+
+        .selectQtite{
+            position: relative;
+            color : map-get($colors, listooGreen);
+            padding: 10px 0px;
+            background-color: map-get($colors, listooPink);
+            vertical-align: middle;
+
+            div, h2{
+                display: inline-block;
+                font-size: 20px !important;
+            }
+
+            ion-icon{
+                background-color : white;
+                font-size : 25px;
+                width: 25px;
+                height: 25px;
+                border-radius: 20px;
+                vertical-align: middle;
+                margin: 0px 10px;
+            }
+
+            h2{
+                color : white;
+            }
+            
+
+            p{
+                display: inline-block;
+                font-size : 12px !important;
+                text-align: center;
+                color : white;
+                vertical-align: middle;
+                font-size : 20px !important;
+            }
+        }
+
+        .selectQtite.qtiteOrder{
+            background-color: map-get($colors, listooGreen) !important;
+        }
+
+        .border{
+            border-right: solid 1px #bbbbbb;
+        }
+
+        div{
+            text-align: center;
+        }
+    } 
+
+    .description, .location{
+        text-align: left !important;
+        width: 95%;
+        margin-left : 2.5%;
+
+        ion-icon{
+            color : map-get($colors, listooPink) !important;
+            font-size : 20px;
+            margin-right : 20px;
+
+            h3{
+                margin-left : 10px !important;
+            }
+        }
+
+        h3{
+            display: inline-block;
+            margin: 0px !important;
+            color : #4d4d4d !important;
+            font-size : 2rem !important;
+            line-height: 4rem;
+        }
+
+        p{
+            margin-top : 5px;
+            color : #4d4d4d !important;
+        }
+    }
+
+    .location{
+        display: inline-block;
+
+        p{
+            
+            text-decoration: underline !important;
+        }
+    }
+}

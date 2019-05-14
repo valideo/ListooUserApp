@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Galano Grotesque regular';
+    src: url('../assets/fonts/Galano\ Grotesque.otf'),
+         url('../assets/fonts/Galano\ Grotesque.woff') format('woff');
+    font-weight: 400;
+  }
+  
+  @font-face {
+    font-family: 'Galano Grotesque light';
+    src: url('../assets/fonts/Galano\ Grotesque\ Light.otf'),
+         url('../assets/fonts/Galano\ Grotesque\ Light.woff') format('woff');
+    font-weight: 200;
+  }
+  
+  @font-face {
+    font-family: 'Galano Grotesque bold';
+    src: url('../assets/fonts/Galano\ Grotesque\ Bold.otf'),
+         url('../assets/fonts/Galano\ Grotesque\ Bold.woff') format('woff');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'Galano Grotesque medium';
+    src: url('../assets/fonts/Galano\ Grotesque\ Medium.otf'),
+         url('../assets/fonts/Galano\ Grotesque\ Medium.woff') format('woff');
+    font-weight: 500;
+  }
+
+  @font-face {
+     font-family: 'Galano Grotesque medium';
+     src: url('../assets/fonts/Galano\ Grotesque\ Medium\ Italic.otf'),
+          url('../assets/fonts/Galano\ Grotesque\ Medium\ Italic.woff') format('woff');
+     font-style: italic;
+   }

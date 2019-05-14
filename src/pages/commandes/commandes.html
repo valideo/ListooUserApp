@@ -6,15 +6,27 @@
 
 
 <ion-content padding>
-  <h2>Vos commandes</h2>
+  <h1>Mis pedidos</h1>
+  <p>Los pedidos realizados el dia de hoy:</p>
   <ion-list>
-    <ion-item *ngFor="let item of ordersDetail" >
-      <ion-avatar item-start>
-        <ion-icon name="md-basket"></ion-icon>
-      </ion-avatar>
-      <h2>{{item.qtite}} panier réservé(s)</h2>
-      <p>{{item.fName}} {{item.sName}}</p>
-      <p class="panierRecup" *ngIf="item.isRecup" >Panier récupéré !</p>
-    </ion-item>
+    <ion-card *ngFor="let item of ordersDetail" (click)="goToDetail(item)">
+        <div class="imgWrap">
+          <img src="http://5.51.150.55:8080/uploads/{{item.piUrl}}"/>
+        </div>
+        <div class="picText">
+          <h1>{{item.restoName}}</h1>
+          <p>{{item.restoType}}</p>
+          <p>$ {{item.finalPrice}} ({{item.qtite}} pedido(s))</p>
+        </div>
+        <div class="bottomBar aRecup" *ngIf="!item.isExpire && !item.isRecup" >
+            <h3>RECOGER EN : {{item.timeLeft}}</h3>
+        </div>
+        <div class="bottomBar recup" *ngIf="item.isRecup">
+            <h2>PEDIDO RECOGIDO</h2>
+        </div>
+        <div class="bottomBar expire" *ngIf="item.isExpire">
+            <h2>Panier expiré</h2>
+        </div>
+    </ion-card>
   </ion-list>
 </ion-content>

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ToastController, DateTime, Events } from 'ionic-angular';
+import { ToastController, DateTime, Events, AlertController } from 'ionic-angular';
 
 @Injectable()
 export class ApiProvider {
@@ -9,7 +9,7 @@ export class ApiProvider {
   token : string = "";
   isBlured : string = "blured";
 
-  constructor(public http: HttpClient,private toastCtrl: ToastController, private events : Events) {
+  constructor(public http: HttpClient,private toastCtrl: ToastController, private events : Events, private alertCtrl : AlertController) {
 
   }
 
@@ -28,6 +28,41 @@ export class ApiProvider {
     toast.present();
   }
 
+  presentAlertOK(message : string) {
+    const alert = this.alertCtrl.create({
+      message: message,
+      buttons: ['Ok']
+    });
+  
+    alert.present();
+  }
+
+  presentAlertConnexion(message : string) {
+    const alert = this.alertCtrl.create({
+      message: message,
+      buttons: ['Reintentar']
+    });
+  
+    alert.present();
+  }
+
+  presentAlertNotif(title : string, message : string) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      message: message,
+      buttons: [
+        {
+        text : 'Ver el pedido',
+        handler: () => {
+          this.events.publish('goOrders');
+        }
+      }
+    ]
+    });
+    alert.present();
+  }
+
+
 //Users 
 
   apiLogin(email : string, password: string) {
@@ -37,7 +72,7 @@ export class ApiProvider {
     let options = {headers: headers}
     let postData = {"email": email,"password": password}
     return new Promise((resolve) => {
-      this.http.post(this.apiBaseUrl+"users/loginResto/", postData, options).subscribe(data => {
+      this.http.post(this.apiBaseUrl+"users/loginUser/", postData, options).subscribe(data => {
         this.token = data['token'];
         this.events.publish('tokenOk');
         console.log(this.token);
@@ -54,6 +89,23 @@ export class ApiProvider {
     });
   }
 
+  apiLoginFB(email : string) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = {headers: headers}
+    let postData = {"email": email}
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiBaseUrl+"users/loginUserFB/", postData, options).subscribe(data => {
+        this.token = data['token'];
+        this.events.publish('tokenOk');
+        console.log(this.token);
+        resolve(data);
+      }, err => {
+        reject(err);
+      });
+    });
+  }
   apiSendMail(email : string) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -71,14 +123,14 @@ export class ApiProvider {
     });
   }
 
-  apiRegister(email : string, password: string, sName : string, fName : string, address : string, city : string, zip : string, tel : string, restoName : string, restoType : string) {
+  apiRegister(email : string, password: string, sName : string, fName : string, address : string, city : string, tel : string, age : number) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     let options = {headers: headers}
-    let postData = {"email": email,"password": password, "sName": sName, "fName" : fName, "address" : address, "city": city, "zip" : zip, "tel" : tel, "restoName" : restoName, "restoType" : restoType }
+    let postData = {"email": email,"password": password, "sName": sName, "fName" : fName, "address" : address, "city": city, "zip" : "01000", "tel" : tel,"age" : age }
     return new Promise((resolve) => {
-      this.http.post(this.apiBaseUrl+"users/registerResto/", postData, options).subscribe(data => {
+      this.http.post(this.apiBaseUrl+"users/registerUser/", postData, options).subscribe(data => {
         resolve(data);
         this.presentToast("Votre compte a bien été créé");
       }, err => {
@@ -109,7 +161,7 @@ export class ApiProvider {
     });
   }
 
-  apiLoadUser(userId : number) {
+  apiLoadResto(userId : number) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+this.token,
@@ -125,12 +177,28 @@ export class ApiProvider {
     });
   }
 
-  apiUpdateMe(email:string, sName:string, fName:string, address:string, city:string, zip:string, tel:string, restoName:string, restoType:string) {
+  apiLoadRestosWithFilter(queryString : string) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+this.token,
     });
-    let postData = {"email": email,"sName": sName, "fName":fName, "address":address, "city":city, "zip":zip, "tel":tel, "age":null, "restoName":restoName, "restoType":restoType}
+    let options = {headers: headers}
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiBaseUrl+"users/filter/"+queryString, options).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+        this.presentToast('Impossible de charger les informations');
+      });
+    });
+  }
+
+  apiUpdateMe(email:string, sName:string, fName:string, address:string, city:string, tel:string, age:number) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+this.token,
+    });
+    let postData = {"email": email,"sName": sName, "fName":fName, "address":address, "city":city, "zip":"01000", "tel":tel, "age":age, "restoName":null, "restoType":null}
     let options = {headers: headers}
     return new Promise((resolve, reject) => {
       this.http.put(this.apiBaseUrl+"users/me/",postData, options).subscribe(data => {
@@ -145,14 +213,14 @@ export class ApiProvider {
 
   //Annonces 
 
-  apiGetAnnonce() {
+  apiGetAnnonce(id : number) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+this.token,
     });
     let options = {headers: headers}
     return new Promise((resolve, reject) => {
-      this.http.get(this.apiBaseUrl+"getAnnonce/", options).subscribe(data => {
+      this.http.get(this.apiBaseUrl+"annonce/"+id, options).subscribe(data => {
         resolve(data);
       }, err => {
         reject(err);
@@ -160,69 +228,31 @@ export class ApiProvider {
     });
   }
 
-  apiCreateAnnonce(desc : string, piUrl: string, price : number, startHour : Date, endHour : Date, qtite : number, isActive : boolean) {
+  apiGetAnnonceByResto(idResto : number) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+this.token,
     });
     let options = {headers: headers}
-    let postData = {"desc": desc, "piUrl": "'defaultPic.jpg'", "price" : price, "startHour" : startHour, "endHour": endHour, "qtite" : qtite, "isActive" : isActive}
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiBaseUrl+"annonce/create/", postData, options).subscribe(data => {
+      this.http.get(this.apiBaseUrl+"annonce/resto/"+idResto, options).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
         reject(err);
       });
     });
   }
 
-  apiUpdateAnnonce(desc : string, price : number, startHour : Date, endHour : Date, qtite : number) {
+  apiGetAllAnnonces() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+this.token,
     });
     let options = {headers: headers}
-    let postData = {"desc": desc, "price" : price, "startHour" : startHour, "endHour": endHour, "qtite" : qtite}
     return new Promise((resolve, reject) => {
-      this.http.put(this.apiBaseUrl+"annonce/update/", postData, options).subscribe(data => {
+      this.http.get(this.apiBaseUrl+"annonces/", options).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
-        reject(err);
-      });
-    });
-  }
-
-  apiChangeAnnonceState(isActive : boolean) {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+this.token,
-    });
-    let options = {headers: headers}
-    let postData = {"isActive" : isActive}
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiBaseUrl+"annonce/updateState/", postData, options).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-        reject(err);
-      });
-    });
-  }
-
-  apiUpdateImg(url : string) {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+this.token,
-    });
-    let options = {headers: headers}
-    let postData = {"imgUrl" : url}
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiBaseUrl+"annonce/updateImg/", postData, options).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
         reject(err);
       });
     });
@@ -237,10 +267,42 @@ export class ApiProvider {
     });
     let options = {headers: headers}
     return new Promise((resolve, reject) => {
-      this.http.get(this.apiBaseUrl+"commandes/resto", options).subscribe(data => {
+      this.http.get(this.apiBaseUrl+"commandes/user", options).subscribe(data => {
         resolve(data);
       }, err => {
         reject(err);
+      });
+    });
+  }
+
+  apiGetCommandesByAnnonce(id : number) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+this.token,
+    });
+    let options = {headers: headers}
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiBaseUrl+"commandes/"+id, options).subscribe(data => {
+        resolve(data);
+      }, err => {
+        reject(err);
+      });
+    });
+  }
+
+  apiCreateCommande(idAnnonce : number, qtite: number, date : Date) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+this.token,
+    });
+    let options = {headers: headers}
+    let postData = {"q": qtite,"idAnnonce": idAnnonce, "date": date}
+    return new Promise((resolve) => {
+      this.http.post(this.apiBaseUrl+"commande/create/", postData, options).subscribe(data => {
+        resolve(data);
+        this.presentToast("Votre commande a bien été passée");
+      }, err => {
+          this.presentToast('Impossible de passer la commande');
       });
     });
   }
