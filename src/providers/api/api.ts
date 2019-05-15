@@ -62,6 +62,23 @@ export class ApiProvider {
     alert.present();
   }
 
+  public hideTabs() {
+    let tabs = document.querySelectorAll('.tabbar');
+    let scrollContent = document.querySelectorAll('.scroll-content');
+    if (tabs !== null) {
+      Object.keys(tabs).map((key) => {
+        tabs[key].style.transform = 'translateY(56px)';
+      });
+
+      // fix for removing the margin if you got scorllable content
+      setTimeout(() =>{
+        Object.keys(scrollContent).map((key) => {
+          scrollContent[key].style.marginBottom = '0';
+        });
+      })
+    }
+  }
+
 
 //Users 
 

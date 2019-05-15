@@ -52,7 +52,7 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
-   
+   this.apiProvider.hideTabs();
   }
 
   goToLogin(){
