@@ -25,14 +25,14 @@ export class AnnonceDetailPage {
   finalPrice : number = 3000;
   qtite : number = 0;
   qtiteSelected : number = 1;
-  orderTotal : number = 0;
+  orderTotal : string;
   startHour;
   endHour;
   qtiteLeft : number = 0;
   horaires : string = "";
   finishOrder : boolean = false;
   detailOrder : boolean = false;
-  orderTotalBil : number;
+  orderTotalBil : string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, private launchNavigator: LaunchNavigator, private fcm : FcmProvider, private localNotifications: LocalNotifications, private alertCtrl : AlertController) {
     this.annonceSelected = this.navParams.get("annonce");
@@ -54,7 +54,7 @@ export class AnnonceDetailPage {
     this.finalPrice = this.annonceSelected["price"];
     this.orderTotal = this.annonceSelected["price"];
     this.qtite = this.annonceSelected["qtite"];
-    this.orderTotalBil = this.finalPrice * this.qtite;
+    this.orderTotalBil = (this.finalPrice * this.qtite).toLocaleString();
     this.startHour = new Date(this.annonceSelected["startHour"]);
     this.endHour = new Date(this.annonceSelected["endHour"]);
     this.desc = this.annonceSelected["desc"];
@@ -110,17 +110,18 @@ export class AnnonceDetailPage {
         if(this.qtiteLeft >= this.qtiteSelected){
           this.apiProvider.apiCreateCommande(this.idAnnonce, this.qtiteSelected, today).then(data =>{
             console.log(data);
-            this.localNotifications.schedule([{
+            console.log(new Date(this.startHour.getTime() - 600).toLocaleTimeString())
+           /* this.localNotifications.schedule([{
               id: 1,
-              title : 'Votre commande Listoo',
-              text: 'Votre commande sera prête dans 1h30 !',
+              title : 'Su paquete Listoo.',
+              text: 'Su pedido estará disponible en 1h30 !',
               trigger: {at: new Date(this.startHour.getTime() - 5400)},
              },{
               id: 2,
-              title : 'Votre commande Listoo',
-              text: 'Votre commande sera prête dans 10 minutes !',
+              title : 'Su paquete Listoo.',
+              text: 'Su pedido estará disponible en 10 minutos !',
               trigger: {at: new Date(this.startHour.getTime() - 600)},
-            }]);
+            }]);*/
             let alert = this.alertCtrl.create({
               title: 'Reservación confirmada !',
               subTitle: '<p>'+this.horaires + "</p></br><p>"+ this.address+'</p>',
@@ -171,14 +172,16 @@ export class AnnonceDetailPage {
     if(this.qtiteSelected < this.qtiteLeft)
       this.qtiteSelected += 1;
     
-    this.orderTotal =  this.initialPrice*0.3*this.qtiteSelected;
+    this.orderTotal =  ((this.initialPrice*0.3*this.qtiteSelected)*1000).toLocaleString('es-CO');
+    console.log(this.initialPrice);
+    console.log(this.qtiteSelected);
   }
 
   removeQtite(){
     if(this.qtiteSelected > 1)
       this.qtiteSelected -= 1;
 
-    this.orderTotal =  this.initialPrice*0.3*this.qtiteSelected;
+    this.orderTotal =  ((this.initialPrice*0.3*this.qtiteSelected)*1000).toLocaleString('es-CO');
   }
 
   openMap(){
