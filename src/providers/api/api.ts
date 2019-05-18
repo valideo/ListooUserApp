@@ -5,7 +5,7 @@ import { ToastController, DateTime, Events, AlertController } from 'ionic-angula
 @Injectable()
 export class ApiProvider {
 
-  apiBaseUrl = "http://5.51.150.55:8080/api/";
+  apiBaseUrl = "http://api.listoo.co/api/";
   token : string = "";
   isBlured : string = "blured";
 
@@ -150,7 +150,7 @@ export class ApiProvider {
     return new Promise((resolve) => {
       this.http.post(this.apiBaseUrl+"users/registerUser/", postData, options).subscribe(data => {
         resolve(data);
-        this.presentAlertOK("Si cuenta ha sido creada.");
+        this.presentAlertOK("Su cuenta ha sido creada.");
       }, err => {
         if(err.status == 400){
           this.presentAlertConnexion('Algunos campos son incorrectos.');
