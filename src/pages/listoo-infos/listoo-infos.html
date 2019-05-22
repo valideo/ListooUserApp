@@ -1,0 +1,21 @@
+<ion-header class="shadowed">
+ 
+  <ion-icon (click)="goBack()" name="ios-arrow-round-back"></ion-icon>
+  <header-small></header-small>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <div>
+      <button ion-button icon-end outline (click)="openCGU()">CGU<ion-icon item-end name="ios-arrow-dropright-outline"></ion-icon></button>
+  </div>
+  <div>
+      <button ion-button icon-end outline (click)="openLegale()">Noticias Legales<ion-icon name="ios-arrow-dropright-outline"></ion-icon></button>
+  </div>
+  <div>
+    <button ion-button icon-end outline (click)="openPrivacy()">Politicas de privacidad<ion-icon name="ios-arrow-dropright-outline"></ion-icon></button>
+  </div>
+
+</ion-content>

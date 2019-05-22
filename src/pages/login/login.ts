@@ -13,8 +13,8 @@ import { Keyboard } from '@ionic-native/keyboard';
 })
 export class LoginPage {
 
-  email : string = "";
-  password : string = "";
+  email : string = "wan.da@hotmail.com";
+  password : string = "test1234";
   shouldHeight = "100%" ;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, public nativeStorage : NativeStorage, private keyboard : Keyboard) {

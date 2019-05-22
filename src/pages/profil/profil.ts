@@ -1,3 +1,4 @@
+import { ListooInfosPage } from './../listoo-infos/listoo-infos';
 import { HomePage } from '../../pages/home/home';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { ApiProvider } from './../../providers/api/api';
@@ -63,6 +64,10 @@ export class ProfilPage {
         this.apiProvider.presentToast("Impossible de mettre à jour les informations.")
       });
     }
+  }
+
+  goDetailApp(){
+    this.navCtrl.push(ListooInfosPage);
   }
 
 }

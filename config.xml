@@ -105,6 +105,7 @@
         <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw}" />
         <variable name="OKHTTP_VERSION" value="3.12.0" />
     </plugin>
+    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <engine name="windows" spec="6.0.1" />
     <engine name="ios" spec="4.5.5" />
     <engine name="browser" spec="5.0.4" />
