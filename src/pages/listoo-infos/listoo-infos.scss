@@ -1,0 +1,50 @@
+page-listoo-infos {
+
+    ion-header > ion-icon{
+        position: absolute !important;
+        font-size : 3rem !important;
+        width: 3rem !important;
+        text-align: center;
+        background-color: map-get($colors, listooPink );
+        color: white;
+        border-radius: 3rem;
+        left : 5% !important;
+        top : 4vh !important;
+    }
+    ion-header > ion-icon.icon-md{
+        position: absolute !important;
+        font-size : 3rem !important;
+        width: 3rem !important;
+        text-align: center;
+        background-color: map-get($colors, listooPink );
+        color: white;
+        border-radius: 3rem;
+        left : 5% !important;
+        top : 2vh !important;
+    }
+
+    button{
+        margin-bottom : 8% !important;
+        margin-top : 8% !important;
+        width : 70%;
+        text-align : left;
+
+        .button-inner{
+            justify-content:flex-start;
+
+            ion-icon{
+                position: absolute !important;
+                right: 5%
+            }
+        }
+    }
+
+    .button-outline{
+        border-width: 1px;
+        border-style: solid;
+        border-color: #1EC69F;
+        color: #1EC69F !important;
+        background: none !important;
+    }
+
+}

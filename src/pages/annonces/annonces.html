@@ -40,7 +40,7 @@
       (ionCancel)="hideSearchBar($event)">
     </ion-searchbar>
   </div>
-  <p *ngIf="annoncesDetail.length <= 0" >{{noPanierText}}</p>
+  <p *ngIf="showNoPanierText" >{{noPanierText}}</p>
   <ion-list>
     <ion-card *ngFor="let annonce of annoncesDetail" (click)="goToDetail(annonce)">
       <div class="imgWrap"><img src="http://5.51.150.55:8080/uploads/{{annonce.piUrl}}"/></div>

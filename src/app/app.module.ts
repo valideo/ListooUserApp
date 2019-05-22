@@ -13,6 +13,7 @@ import { LoginPage } from './../pages/login/login';
 import { PwforgotPage } from '../pages/pwforgot/pwforgot';
 import { AnnoncesPage } from './../pages/annonces/annonces';
 import { AnnonceDetailPage } from './../pages/annonce-detail/annonce-detail';
+import { ListooInfosPage } from './../pages/listoo-infos/listoo-infos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,6 +26,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Facebook } from '@ionic-native/facebook';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { Facebook } from '@ionic-native/facebook';
     LoginPage,
     AnnoncesPage,
     AnnonceDetailPage,
-    PwforgotPage
+    PwforgotPage,
+    ListooInfosPage
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { Facebook } from '@ionic-native/facebook';
     LoginPage,
     PwforgotPage,
     AnnoncesPage,
-    AnnonceDetailPage
+    AnnonceDetailPage,
+    ListooInfosPage
   ],
   providers: [
     StatusBar,
@@ -70,7 +75,8 @@ import { Facebook } from '@ionic-native/facebook';
     LaunchNavigator,
     FcmProvider,
     Keyboard,
-    Facebook
+    Facebook,
+    InAppBrowser
   ]
 })
 export class AppModule {}

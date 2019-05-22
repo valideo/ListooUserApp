@@ -1,8 +1,7 @@
 import { AnnonceDetailPage } from './../annonce-detail/annonce-detail';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
-import { resolveDefinition } from '@angular/core/src/view/util';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-annonces',
@@ -16,48 +15,68 @@ export class AnnoncesPage {
   categoriesArray : any = [];
   showSB : boolean = false;
   searchString : string = "";
-  noPanierText : string = "Ningún paquete disponible por el momento."
+  noPanierText : string = "";
+  showNoPanierText : boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider : ApiProvider, private alertCtrl : AlertController, private events : Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiProvider : ApiProvider, private alertCtrl : AlertController, public loadingCtrl: LoadingController) {
 
   }
 
   init(){
     this.annoncesDetail = [];
-    this.apiProvider.apiGetAllAnnonces().then(data =>{
-      this.annonces = data;
-      this.annonces.forEach(annonce => {
-        this.apiProvider.apiLoadResto(annonce["idRestoUser"]).then(dataResto =>{
-          var type = this.getTypeName( dataResto["restoType"]);
-          var address = dataResto["address"] + ", " + dataResto["city"];
-          var picName = annonce["piUrl"].substring(1, annonce["piUrl"].length-1);
-          var qtiteLeft = 0;
-          this.apiProvider.apiGetCommandesByAnnonce(annonce["id"]).then(data =>{
-      
-            var nbReserved = 0;
-            var orders : any = data;
-            orders.forEach(element => {
-              nbReserved += element["qtite"]
-            });
-            qtiteLeft = annonce["qtite"] - nbReserved;
-            var detailObject = { idAnnonce : annonce["id"], idUserResto : annonce["idRestoUser"] ,restoName : dataResto["restoName"], typeValue : dataResto["restoType"], restoType : type, address : address, tel : dataResto["tel"], piUrl : picName, startHour : annonce["startHour"], endHour : annonce["endHour"], price :  (annonce["price"]*0.3).toLocaleString('es-CO'), initialPrice : (annonce["price"]).toLocaleString('es-CO') , qtite :  annonce["qtite"], desc : annonce["desc"], qtiteLeft : qtiteLeft };
-            this.checkFilters(detailObject).then(data =>{
-              if(data == true)
-                this.annoncesDetail.push(detailObject);
-            });
-            console.log(this.annoncesDetail)
-          },err =>{
-      
-          });
-          
-        }, err =>{
-          console.log(err);
-        });
-      });
-    }, err =>{
-      console.log(err);
-    })
+    this.showNoPanierText = false;
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando...',
+      spinner : 'crescent'
+    });
+    loading.present();
+    this.loadAnnonces().then(data =>{
+      this.annoncesDetail = data;
+      loading.dismiss();
+      if(!data){
+        this.showNoPanierText = true;
+      }
+    }, err => {
+      loading.dismiss();
+    });
   }
+
+  loadAnnonces() : Promise<any>{
+    return new Promise((resolve, reject) => {
+      var annonceDetailTemp = [];
+      this.apiProvider.apiGetAllAnnonces().then(data =>{
+        this.annonces = data;
+        this.annonces.forEach(annonce => {
+          this.apiProvider.apiLoadResto(annonce["idRestoUser"]).then(dataResto =>{
+            var type = this.getTypeName( dataResto["restoType"]);
+            var address = dataResto["address"] + ", " + dataResto["city"];
+            var picName = annonce["piUrl"].substring(1, annonce["piUrl"].length-1);
+            var qtiteLeft = 0;
+            this.apiProvider.apiGetCommandesByAnnonce(annonce["id"]).then(data =>{
+        
+              var nbReserved = 0;
+              var orders : any = data;
+              orders.forEach(element => {
+                nbReserved += element["qtite"]
+              });
+              qtiteLeft = annonce["qtite"] - nbReserved;
+              var detailObject = { idAnnonce : annonce["id"], idUserResto : annonce["idRestoUser"] ,restoName : dataResto["restoName"], typeValue : dataResto["restoType"], restoType : type, address : address, tel : dataResto["tel"], piUrl : picName, startHour : annonce["startHour"], endHour : annonce["endHour"], price :  (annonce["price"]*0.3).toLocaleString('es-CO'), initialPrice : (annonce["price"]).toLocaleString('es-CO') , qtite :  annonce["qtite"], desc : annonce["desc"], qtiteLeft : qtiteLeft };
+              this.checkFilters(detailObject).then(data =>{
+                if(data == true)
+                  annonceDetailTemp.push(detailObject);
+              });
+            });
+          }, err =>{
+            console.log(err);
+          });
+        });
+        this.noPanierText = "Ningún paquete disponible por el momento.";
+        resolve(annonceDetailTemp);
+      }, err =>{
+        console.log(err);
+      })
+  });
+}
 
   showSearchBar(){
     this.showSB = true;
@@ -70,6 +89,25 @@ export class AnnoncesPage {
     if(this.searchString != "" && this.searchString != null && this.searchString != undefined ){
 
       this.annoncesDetail = [];
+      let loading = this.loadingCtrl.create({
+        content: 'Cargando...',
+        spinner : 'crescent'
+      });
+      loading.present();
+      this.loadAnnoncesInput().then(data =>{
+        loading.dismiss();
+        console.log(data);
+        if(data.length <= 0){
+          this.showNoPanierText = true;
+        }
+      }, err => {
+        loading.dismiss();
+      });
+    }
+  }
+
+  loadAnnoncesInput() : Promise<any>{
+    return new Promise((resolve, reject) => {
       this.apiProvider.apiLoadRestosWithFilter(this.searchString).then(data =>{
 
         this.annonces = data;
@@ -94,7 +132,6 @@ export class AnnoncesPage {
               if(data == true)
                 this.annoncesDetail.push(detailObject);
             });
-            console.log(this.annoncesDetail)
           },err =>{
       
           });
@@ -102,16 +139,15 @@ export class AnnoncesPage {
           console.log(err);
         });
       });
-      
-        
+      resolve(this.annoncesDetail);     
       }, err =>{
         console.log(err);
       });
-    }
-  }
+  });
+}
 
   checkFilters(annonceToCheck) : Promise<Boolean>{
-
+      this.noPanierText = "";
       return new Promise((resolve, reject) => {
         this.apiProvider.apiGetCommandesByAnnonce(annonceToCheck["idAnnonce"]).then(data =>{
           var nbReserved = 0;
@@ -138,7 +174,6 @@ export class AnnoncesPage {
         });
    });
   }
-
 
   showFilters() {
     let alert = this.alertCtrl.create();
