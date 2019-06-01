@@ -11,7 +11,7 @@
   <ion-list>
     <ion-card *ngFor="let item of ordersDetail" (click)="goToDetail(item)">
         <div class="imgWrap">
-          <img src="http://5.51.150.55:8080/uploads/{{item.piUrl}}"/>
+          <img src="http://api.listoo.co/uploads/{{item.piUrl}}"/>
         </div>
         <div class="picText">
           <h1>{{item.restoName}}</h1>
