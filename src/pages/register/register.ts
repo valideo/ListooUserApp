@@ -14,6 +14,7 @@ export class RegisterPage {
 
   email : string = "";
   password : string = "";
+  confPassword : string = "";
   fName : string = "";
   sName : string = "";
   tel : string = "";
@@ -37,9 +38,12 @@ export class RegisterPage {
 
   clickRegister(){
     if(this.email != "" && this.password != "" && this.sName != "" && this.fName != "" && this.address != "" && this.city != "" &&  this.tel != ""){
-      this.register();
+      if(this.confPassword == this.password)
+        this.register();
+      else
+        this.apiProvider.presentAlertConnexion("Las constraseñas no corresponde.");
     }else{
-      this.apiProvider.presentToast("Veuillez remplir tous les champs");
+      this.apiProvider.presentToast("Complete todos los campos para validar su inscripción.");
     }
   }
 
