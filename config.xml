@@ -82,31 +82,31 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
         <preference name="ShowSplashScreenSpinner" value="false" />
     </platform>
-    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
-    <plugin name="cordova-plugin-device" spec="^1.1.4" />
-    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^1.2.1" />
-    <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
-    <plugin name="cordova-plugin-telerik-imagepicker" spec="2.3.2">
-        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To access your pictures" />
-    </plugin>
-    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
-    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
-    <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="2.1.3" />
-    <plugin name="cordova-plugin-facebook4" spec="4.2.1">
-        <variable name="APP_ID" value="685935318528402" />
-        <variable name="APP_NAME" value="listoo" />
-    </plugin>
     <allow-navigation href="http://192.168.63.113:8100" />
     <allow-navigation href="http://192.168.111.1:8100" />
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
+    <plugin name="cordova-plugin-device" spec="~1.1.4" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
+    <plugin name="cordova-plugin-nativestorage" spec="~2.3.2" />
+    <plugin name="cordova-plugin-telerik-imagepicker" spec="~2.3.2">
+        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To access your pictures" />
+    </plugin>
+    <plugin name="cordova-plugin-file-transfer" spec="~1.7.1" />
+    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="~2.4.0" />
+    <plugin name="cordova-plugin-local-notification" spec="~0.9.0-beta.2" />
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^5.0.4">
         <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw}" />
-        <variable name="OKHTTP_VERSION" value="3.12.0" />
     </plugin>
-    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="~2.1.3" />
+    <plugin name="cordova-plugin-facebook4" spec="~4.2.1">
+        <variable name="APP_ID" value="685935318528402" />
+        <variable name="APP_NAME" value="listoo" />
+        <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
+        <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
+    </plugin>
+    <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
     <engine name="windows" spec="6.0.1" />
-    <engine name="ios" spec="4.5.5" />
     <engine name="browser" spec="5.0.4" />
 </widget>
