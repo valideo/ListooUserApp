@@ -43,7 +43,7 @@
   <p *ngIf="showNoPanierText" >{{noPanierText}}</p>
   <ion-list>
     <ion-card *ngFor="let annonce of annoncesDetail" (click)="goToDetail(annonce)">
-      <div class="imgWrap"><img src="http://5.51.150.55:8080/uploads/{{annonce.piUrl}}"/></div>
+      <div class="imgWrap"><img src="http://api.listoo.co/uploads/{{annonce.piUrl}}"/></div>
       <div class="card-title">{{annonce.restoName}}</div>
       <div class="card-subtitle">{{annonce.restoType}}</div>
       <div *ngIf="annonce.qtiteLeft > 0"  class="card-qtite">{{annonce.qtiteLeft}} paquetes</div>
