@@ -120,7 +120,6 @@ export class ApiProvider {
         resolve(data);
       }, err => {
         reject(err);
-        this.presentAlertConnexion('Ha acontecido un error en el servidor');
       });
     });
   }
@@ -156,6 +155,8 @@ export class ApiProvider {
           this.presentAlertConnexion('Algunos campos son incorrectos.');
       }else if(err.status == 403 || err.status == 404){
           this.presentAlertConnexion('Algunos campos son incorrectos.');
+      }else if(err.status == 409){
+        this.presentAlertConnexion('Una cuenta con este email ya ha sido creada.');
       }else{
           this.presentAlertConnexion('Ha acontecido un error en el servidor');
       }

@@ -25,6 +25,7 @@ export class CommandesPage {
   }
 
   init(){
+    this.today = new Date();
     this.apiProvider.apiGetCommandes().then(data =>{
       this.ordersDetail = new Array();
       this.orders = data;
@@ -36,8 +37,14 @@ export class CommandesPage {
             if(element["isRecup"] == false && this.today > endHour)
               isExpire = true;
             
-            var msLeft = endHour.getTime() - this.today.getTime();
-            var timeLeft = new Date(msLeft).getHours() -1 + ' heures ' + new Date(msLeft).getMinutes() + ' minutes';
+            var msLeft = (endHour.getTime() - this.today.getTime());
+            console.log(endHour.getTime()/1000);
+            console.log(endHour.toLocaleString());
+            console.log(this.today.getTime()/1000);
+            console.log(this.today.toLocaleString());
+            console.log(msLeft);
+            console.log(new Date(msLeft));
+            var timeLeft = Math.floor((msLeft/(1000*60*60))%24) + ' horas ' + Math.floor((msLeft/(1000*60))%60) + ' minutos';
             var picName = dataAnnonce["piUrl"].substring(1, dataAnnonce["piUrl"].length-1);
             var finalPrice = (element["qtite"] * dataAnnonce["price"]*0.3).toLocaleString('es-CO');
 

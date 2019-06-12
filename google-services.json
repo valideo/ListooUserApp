@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:221087838147:android:7cd08f6b230099dd",
         "android_client_info": {
-          "package_name": "io.listooUser"
+          "package_name": "io.listoResto"
         }
       },
       "oauth_client": [
@@ -32,10 +32,10 @@
               "client_type": 3
             },
             {
-              "client_id": "221087838147-inv8i91bt92fckars0p4d41jj657egpq.apps.googleusercontent.com",
+              "client_id": "221087838147-6ueeigbkoh3mllspp0gbui6r3r3bqjnv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "io.listooUser"
+                "bundle_id": "io.listooResto"
               }
             }
           ]
@@ -68,10 +68,10 @@
               "client_type": 3
             },
             {
-              "client_id": "221087838147-inv8i91bt92fckars0p4d41jj657egpq.apps.googleusercontent.com",
+              "client_id": "221087838147-6ueeigbkoh3mllspp0gbui6r3r3bqjnv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "io.listooUser"
+                "bundle_id": "io.listooResto"
               }
             }
           ]
