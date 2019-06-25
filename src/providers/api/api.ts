@@ -8,6 +8,7 @@ export class ApiProvider {
   apiBaseUrl = "http://api.listoo.co/api/";
   token : string = "";
   isBlured : string = "blured";
+  isBtnDisabled : boolean = false;
 
   constructor(public http: HttpClient,private toastCtrl: ToastController, private events : Events, private alertCtrl : AlertController) {
 
