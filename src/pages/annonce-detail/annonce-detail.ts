@@ -1,9 +1,9 @@
-import { TabsPage } from './../tabs/tabs';
-import { FcmProvider } from './../../providers/fcm/fcm';
+import { TabsPage } from '../tabs/tabs';
+import { FcmProvider } from '../../providers/fcm/fcm';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
-import { ApiProvider } from './../../providers/api/api';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @Component({

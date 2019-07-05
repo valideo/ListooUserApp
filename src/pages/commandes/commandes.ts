@@ -1,7 +1,7 @@
-import { AnnonceDetailPage } from './../annonce-detail/annonce-detail';
-import { ApiProvider } from './../../providers/api/api';
+import { AnnonceDetailPage } from '../annonce-detail/annonce-detail';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-commandes',

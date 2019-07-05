@@ -1,5 +1,5 @@
-import { AnnonceDetailPage } from './../annonce-detail/annonce-detail';
-import { ApiProvider } from './../../providers/api/api';
+import { AnnonceDetailPage } from '../annonce-detail/annonce-detail';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 

@@ -1,10 +1,10 @@
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ApiProvider } from './../../providers/api/api';
-import { TabsPage } from './../tabs/tabs';
+import { ApiProvider } from '../../providers/api/api';
+import { TabsPage } from '../tabs/tabs';
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
-import { LoginPage } from './../login/login';
+import { LoginPage } from '../login/login';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
@@ -18,9 +18,9 @@ export class HomePage {
   fbUserData : any = [];
 
   constructor(public navCtrl: NavController, public nativeStorage : NativeStorage, public platform : Platform, public apiProvider : ApiProvider, public splash : SplashScreen, private fb: Facebook) {
-    
+
     this.platform.ready().then(() => {
-        
+
       this.nativeStorage.getItem('listooUserCredentials')
       .then(
         data => {
@@ -42,7 +42,7 @@ export class HomePage {
         error => {
             console.log(error);
             if(this.apiProvider.token != ""){
-                
+
             }
             this.isLoggedIn = false;
             this.splash.hide();
@@ -52,7 +52,7 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
-   this.apiProvider.hideTabs();
+   // this.apiProvider.hideTabs();
   }
 
   goToLogin(){

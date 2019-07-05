@@ -1,10 +1,10 @@
-import { ListooInfosPage } from './../listoo-infos/listoo-infos';
-import { HomePage } from '../../pages/home/home';
+import { ListooInfosPage } from '../listoo-infos/listoo-infos';
+import { HomePage } from '../home/home';
 import { NativeStorage } from '@ionic-native/native-storage';
-import { ApiProvider } from './../../providers/api/api';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
-
+import { NavController, NavParams, App } from 'ionic-angular';
+import {TabsPage} from "../tabs/tabs";
 
 @Component({
   selector: 'page-profil',
@@ -20,11 +20,20 @@ export class ProfilPage {
   city : string = "";
   age : number = 10;
   isDisabled : boolean = true;
-  btnText : string = "Modificar la información"
+  btnText : string = "Modificar la información";
 
   constructor(public app : App, public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, public nativeStorage : NativeStorage) {
-    this.loadInfos();
+    if (this.apiProvider.token !== '')
+      this.loadInfos();
   }
+
+  ionViewWillEnter(){
+    if (this.apiProvider.token === '')
+      this.goLoginPage();
+    else
+      this.loadInfos();
+  }
+
 
   loadInfos(){
     this.apiProvider.apiLoadProfile().then(data =>{
@@ -43,9 +52,9 @@ export class ProfilPage {
   disconnect(){
     this.nativeStorage.remove('listooUserCredentials').then(data=>{
       this.apiProvider.token = "";
-      this.navCtrl.setRoot(HomePage);
+      this.app.getRootNav().setRoot(TabsPage);
     }, err =>{
-      this.app.getRootNav().setRoot(HomePage);
+      this.app.getRootNav().setRoot(TabsPage);
     });
   }
 
@@ -68,6 +77,10 @@ export class ProfilPage {
 
   goDetailApp(){
     this.navCtrl.push(ListooInfosPage);
+  }
+
+  goLoginPage() {
+    this.navCtrl.push(HomePage);
   }
 
 }
