@@ -31,10 +31,6 @@ export class ProfilPage {
       this.email = data["email"];
       this.fName = data["fName"];
       this.sName = data["sName"];
-      this.tel = data["tel"];
-      this.address = data["address"];
-      this.city = data["city"];
-      this.age = data["age"];
     }, err =>{
 
     });
@@ -54,7 +50,7 @@ export class ProfilPage {
       this.isDisabled = false;
       this.btnText = "Guardar los cambios";
     }else{
-      this.apiProvider.apiUpdateMe(this.email, this.sName, this.fName, this.address, this.city, this.tel, this.age).then(data=>{
+      this.apiProvider.apiUpdateMe(this.email, this.sName, this.fName).then(data=>{
         this.isDisabled = true;
         this.btnText = "Modificar la información";
         this.navCtrl.setRoot(ProfilPage);

@@ -30,22 +30,6 @@
               <ion-label stacked>Email :</ion-label>
               <ion-input disabled="{{isDisabled}}" [(ngModel)]="email" placeholder="carlosruiz@gmail.com" type="email"></ion-input>
           </ion-item>
-        <ion-item>
-            <ion-label stacked>Fecha de nacimiento:</ion-label>
-            <ion-input disabled="{{isDisabled}}" [(ngModel)]="age" type="number"></ion-input>
-        </ion-item>
-          <ion-item>
-              <ion-label stacked>Teléfono:</ion-label>
-              <ion-input disabled="{{isDisabled}}" disabled="{{isDisabled}}" [(ngModel)]="tel" placeholder="300 123 45 67" type="tel"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label stacked>Dirección :</ion-label>
-              <ion-input disabled="{{isDisabled}}" [(ngModel)]="address" placeholder="Cra 7 # 91 - 72" type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label stacked>Ciudad :</ion-label>
-              <ion-input disabled="{{isDisabled}}" [(ngModel)]="city" placeholder="Bogota" type="text"></ion-input>
-          </ion-item>
           </ion-list>
   
     <button ion-button full (click)="editInfos()">{{btnText}}</button>

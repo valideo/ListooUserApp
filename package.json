@@ -51,8 +51,8 @@
     "cordova-plugin-telerik-imagepicker": "2.3.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-windows": "6.0.1",
-    "firebase": "^4.6.2",
-    "grpc": "^1.20.3",
+    "firebase": "^4.12.1",
+    "ionic": "^3.9.2",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "^3.1.11",
+    "@ionic/lab": "2.0.2",
     "typescript": "2.4.2"
   },
   "description": "Listoo App for users",
@@ -85,17 +86,13 @@
         "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
       },
       "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-inappbrowser": {},
       "cordova-plugin-facebook4": {
         "APP_ID": "685935318528402",
         "APP_NAME": "listoo",
         "FACEBOOK_HYBRID_APP_EVENTS": "false",
         "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0"
-      },
-      "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-telerik-imagepicker": {
-        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To access your pictures"
-      },
-      "cordova-plugin-file-transfer": {}
+      }
     },
     "platforms": [
       "windows",

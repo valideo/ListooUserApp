@@ -100,14 +100,14 @@
         <variable name="GOOGLE_API_KEY_FOR_ANDROID" value="{AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw}" />
     </plugin>
     <plugin name="cordova-plugin-ionic-keyboard" spec="~2.1.3" />
-    <plugin name="cordova-plugin-facebook4" spec="~4.2.1">
+    <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
+    <plugin name="cordova-plugin-facebook4" spec="4.2.1">
         <variable name="APP_ID" value="685935318528402" />
         <variable name="APP_NAME" value="listoo" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>
-    <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
     <engine name="windows" spec="6.0.1" />
     <engine name="browser" spec="5.0.4" />
-    <engine name="ios" spec="~4.5.5" />
+    <engine name="ios" spec="4.5.5" />
 </widget>

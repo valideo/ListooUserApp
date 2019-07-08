@@ -17,11 +17,6 @@ export class RegisterPage {
   confPassword : string = "";
   fName : string = "";
   sName : string = "";
-  tel : string = "";
-  address : string = "";
-  city : string = "";
-  zip : string = "";
-  age : number;
   userDataFb : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider, private nativeStorage : NativeStorage) {
@@ -37,7 +32,7 @@ export class RegisterPage {
   }
 
   clickRegister(){
-    if(this.email != "" && this.password != "" && this.sName != "" && this.fName != "" && this.address != "" && this.city != "" &&  this.tel != ""){
+    if(this.email != "" && this.password != "" && this.sName != "" && this.fName != ""){
       if(this.confPassword == this.password)
         this.register();
       else
@@ -48,7 +43,7 @@ export class RegisterPage {
   }
 
   register(){
-    this.apiProvider.apiRegister(this.email, this.password, this.sName, this.fName, this.address, this.city, this.tel, this.age).then(data =>{
+    this.apiProvider.apiRegister(this.email, this.password, this.sName, this.fName).then(data =>{
       this.login();
     }, err =>{
 

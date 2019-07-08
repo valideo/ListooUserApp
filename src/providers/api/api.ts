@@ -8,6 +8,7 @@ export class ApiProvider {
   apiBaseUrl = "http://api.listoo.co/api/";
   token : string = "";
   isBlured : string = "blured";
+  isBtnDisabled : boolean = false;
 
   constructor(public http: HttpClient,private toastCtrl: ToastController, private events : Events, private alertCtrl : AlertController) {
 
@@ -140,12 +141,12 @@ export class ApiProvider {
     });
   }
 
-  apiRegister(email : string, password: string, sName : string, fName : string, address : string, city : string, tel : string, age : number) {
+  apiRegister(email : string, password: string, sName : string, fName : string) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     let options = {headers: headers}
-    let postData = {"email": email,"password": password, "sName": sName, "fName" : fName, "address" : address, "city": city, "zip" : "01000", "tel" : tel,"age" : age }
+    let postData = {"email": email,"password": password, "sName": sName, "fName" : fName, "address" : "not provided", "city": "bogota", "zip" : "01000", "tel" : "0100000000","age" : 20 }
     return new Promise((resolve) => {
       this.http.post(this.apiBaseUrl+"users/registerUser/", postData, options).subscribe(data => {
         resolve(data);
@@ -212,12 +213,12 @@ export class ApiProvider {
     });
   }
 
-  apiUpdateMe(email:string, sName:string, fName:string, address:string, city:string, tel:string, age:number) {
+  apiUpdateMe(email:string, sName:string, fName:string) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+this.token,
     });
-    let postData = {"email": email,"sName": sName, "fName":fName, "address":address, "city":city, "zip":"01000", "tel":tel, "age":age, "restoName":null, "restoType":null}
+    let postData = {"email": email,"sName": sName, "fName":fName, "address":"not provided", "city":"bogota", "zip":"01000", "tel":"0100000000", "age":20, "restoName":null, "restoType":null}
     let options = {headers: headers}
     return new Promise((resolve, reject) => {
       this.http.put(this.apiBaseUrl+"users/me/",postData, options).subscribe(data => {

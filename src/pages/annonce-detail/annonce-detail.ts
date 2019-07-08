@@ -98,6 +98,9 @@ export class AnnonceDetailPage {
     if(!this.finishOrder)
       this.navCtrl.push(AnnonceDetailPage, {finishOrder : true, annonce : this.annonceSelected});
     else{
+      if(!this.apiProvider.isBtnDisabled){
+        
+      this.apiProvider.isBtnDisabled = true;
       var today = new Date();
       this.apiProvider.apiGetCommandesByAnnonce(this.idAnnonce).then(data =>{
       
@@ -138,6 +141,7 @@ export class AnnonceDetailPage {
               ]
             });
             alert.present();
+            this.apiProvider.isBtnDisabled = false;
           
             this.fcm.notifPanierRecup(this.idRestoUser).then(dataNotif =>{
               console.log(dataNotif);
@@ -161,6 +165,7 @@ export class AnnonceDetailPage {
       });
       
     }
+  }
   }
 
 
