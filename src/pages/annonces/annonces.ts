@@ -68,12 +68,14 @@ export class AnnoncesPage {
             });
           }, err =>{
             console.log(err);
+            reject(err);
           });
         });
         this.noPanierText = "Ningún paquete disponible por el momento.";
         resolve(annonceDetailTemp);
       }, err =>{
         console.log(err);
+        reject(err);
       })
   });
 }

@@ -21,33 +21,6 @@ export class HomePage {
 
     this.platform.ready().then(() => {
 
-      this.nativeStorage.getItem('listooUserCredentials')
-      .then(
-        data => {
-          console.log(data);
-          this.apiProvider.apiLogin(data['email'], data['pass']).then(data => {
-            if(data['token'] != ""){
-              this.apiProvider.token = data['token'];
-              this.navCtrl.setRoot(TabsPage);
-              this.isLoggedIn = true;
-            }else{
-              this.isLoggedIn = false;
-              this.splash.hide();
-            }
-          }, err =>{
-            this.isLoggedIn = false;
-            console.log(err);
-          });
-        },
-        error => {
-            console.log(error);
-            if(this.apiProvider.token != ""){
-
-            }
-            this.isLoggedIn = false;
-            this.splash.hide();
-        }
-      );
     });
   }
 

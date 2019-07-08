@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { AnnonceDetailPage } from '../annonce-detail/annonce-detail';
 import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
@@ -83,7 +84,14 @@ export class CommandesPage {
   }
 
   ionViewWillEnter(){
-   this.init();
+  if (this.apiProvider.token === '')
+    this.goLoginPage();
+  else
+    this.init();
+  }
+
+  goLoginPage() {
+    this.navCtrl.push(HomePage);
   }
 
 }
