@@ -1,9 +1,8 @@
-import { PwforgotPage } from './../pwforgot/pwforgot';
+import { PwforgotPage } from '../pwforgot/pwforgot';
 import { NativeStorage } from '@ionic-native/native-storage';
-import { TabsPage } from './../tabs/tabs';
-import { ApiProvider } from './../../providers/api/api';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Keyboard } from '@ionic-native/keyboard';
 
 
@@ -41,7 +40,10 @@ export class LoginPage {
     this.apiProvider.apiLogin(this.email, this.password).then(data =>{
       if(data['token'] != ""){
         this.apiProvider.token = data["token"];
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.popToRoot().then(() => {
+          this.navCtrl.setRoot(this.navCtrl.getActive().component)
+        });
+
         this.nativeStorage.setItem('listooUserCredentials', {email: this.email, pass: this.password})
         .then(
           () => console.log('Stored item!'),
@@ -50,7 +52,6 @@ export class LoginPage {
       }
     });
   }
-
 
   forgotPassClick(){
     this.navCtrl.push(PwforgotPage);

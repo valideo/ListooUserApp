@@ -1,10 +1,11 @@
-import { TabsPage } from './../tabs/tabs';
-import { FcmProvider } from './../../providers/fcm/fcm';
+import { TabsPage } from '../tabs/tabs';
+import { FcmProvider } from '../../providers/fcm/fcm';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
-import { ApiProvider } from './../../providers/api/api';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-annonce-detail',
@@ -34,7 +35,7 @@ export class AnnonceDetailPage {
   detailOrder : boolean = false;
   orderTotalBil : string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, private launchNavigator: LaunchNavigator, private fcm : FcmProvider, private localNotifications: LocalNotifications, private alertCtrl : AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider : ApiProvider, private launchNavigator: LaunchNavigator, private fcm : FcmProvider, private localNotifications: LocalNotifications, private alertCtrl : AlertController, private modalCtrl : ModalController) {
     this.annonceSelected = this.navParams.get("annonce");
     this.finishOrder = this.navParams.get("finishOrder");
     this.detailOrder = this.navParams.get("detailOrder");
@@ -98,7 +99,9 @@ export class AnnonceDetailPage {
     if(!this.finishOrder)
       this.navCtrl.push(AnnonceDetailPage, {finishOrder : true, annonce : this.annonceSelected});
     else{
-      if(!this.apiProvider.isBtnDisabled){
+      if (this.apiProvider.token === '')
+        this.goLoginPage();
+      else if(!this.apiProvider.isBtnDisabled){
         
       this.apiProvider.isBtnDisabled = true;
       var today = new Date();
@@ -194,6 +197,11 @@ export class AnnonceDetailPage {
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)
     );
+  }
+
+  goLoginPage() {
+    let profileModal = this.modalCtrl.create(HomePage);
+    profileModal.present();
   }
 
 }

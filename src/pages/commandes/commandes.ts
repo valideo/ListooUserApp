@@ -1,7 +1,8 @@
-import { AnnonceDetailPage } from './../annonce-detail/annonce-detail';
-import { ApiProvider } from './../../providers/api/api';
+import { HomePage } from './../home/home';
+import { AnnonceDetailPage } from '../annonce-detail/annonce-detail';
+import { ApiProvider } from '../../providers/api/api';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-commandes',
@@ -83,7 +84,14 @@ export class CommandesPage {
   }
 
   ionViewWillEnter(){
-   this.init();
+  if (this.apiProvider.token === '')
+    this.goLoginPage();
+  else
+    this.init();
+  }
+
+  goLoginPage() {
+    this.navCtrl.push(HomePage);
   }
 
 }

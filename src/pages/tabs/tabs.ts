@@ -1,8 +1,8 @@
-import { AnnoncesPage } from './../annonces/annonces';
+import { AnnoncesPage } from '../annonces/annonces';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ApiProvider } from './../../providers/api/api';
-import { ProfilPage } from './../profil/profil';
-import { CommandesPage } from './../commandes/commandes';
+import { ApiProvider } from '../../providers/api/api';
+import { ProfilPage } from '../profil/profil';
+import { CommandesPage } from '../commandes/commandes';
 import { Component } from '@angular/core';
 import { Events } from 'ionic-angular';
 
@@ -20,7 +20,6 @@ export class TabsPage {
     events.subscribe('blurChange', () => {
       this.isBlured = this.apiProvider.isBlured;
     });
-    
   }
 
   ionViewDidLoad(){

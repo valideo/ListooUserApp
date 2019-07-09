@@ -1,10 +1,10 @@
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ApiProvider } from './../../providers/api/api';
-import { TabsPage } from './../tabs/tabs';
+import { ApiProvider } from '../../providers/api/api';
+import { TabsPage } from '../tabs/tabs';
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
-import { LoginPage } from './../login/login';
+import { LoginPage } from '../login/login';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
@@ -18,41 +18,14 @@ export class HomePage {
   fbUserData : any = [];
 
   constructor(public navCtrl: NavController, public nativeStorage : NativeStorage, public platform : Platform, public apiProvider : ApiProvider, public splash : SplashScreen, private fb: Facebook) {
-    
+
     this.platform.ready().then(() => {
-        
-      this.nativeStorage.getItem('listooUserCredentials')
-      .then(
-        data => {
-          console.log(data);
-          this.apiProvider.apiLogin(data['email'], data['pass']).then(data => {
-            if(data['token'] != ""){
-              this.apiProvider.token = data['token'];
-              this.navCtrl.setRoot(TabsPage);
-              this.isLoggedIn = true;
-            }else{
-              this.isLoggedIn = false;
-              this.splash.hide();
-            }
-          }, err =>{
-            this.isLoggedIn = false;
-            console.log(err);
-          });
-        },
-        error => {
-            console.log(error);
-            if(this.apiProvider.token != ""){
-                
-            }
-            this.isLoggedIn = false;
-            this.splash.hide();
-        }
-      );
+
     });
   }
 
   ionViewDidLoad(){
-   this.apiProvider.hideTabs();
+   // this.apiProvider.hideTabs();
   }
 
   goToLogin(){
