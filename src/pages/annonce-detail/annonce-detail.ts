@@ -200,8 +200,9 @@ export class AnnonceDetailPage {
   }
 
   goLoginPage() {
-    let profileModal = this.modalCtrl.create(HomePage);
-    profileModal.present();
+    let loginModal = this.modalCtrl.create(HomePage);
+    loginModal.present();
+    // this.navCtrl.push(HomePage);
   }
 
 }

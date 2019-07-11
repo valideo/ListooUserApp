@@ -83,11 +83,11 @@ export class CommandesPage {
       this.navCtrl.push(AnnonceDetailPage, {detailOrder : true, annonce : annonce});
   }
 
-  ionViewWillEnter(){
-  if (this.apiProvider.token === '')
-    this.goLoginPage();
-  else
-    this.init();
+  ionViewWillEnter() {
+    if (this.apiProvider.token === '')
+      this.goLoginPage();
+    else
+      this.init();
   }
 
   goLoginPage() {
