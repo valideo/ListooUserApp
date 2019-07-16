@@ -2,7 +2,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../../providers/api/api';
 import { TabsPage } from '../tabs/tabs';
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { LoginPage } from '../login/login';
 import { NativeStorage } from '@ionic-native/native-storage';

@@ -35,6 +35,7 @@
     "@ionic/storage": "2.1.3",
     "cordova-android": "7.1.4",
     "cordova-browser": "5.0.4",
+    "cordova-ios": "4.5.5",
     "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-device": "^1.1.4",
@@ -42,15 +43,16 @@
     "cordova-plugin-facebook4": "5.0.0",
     "cordova-plugin-fcm-with-dependecy-updated": "2.4.0",
     "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-ionic-webview": "^1.2.1",
-    "cordova-plugin-local-notification": "0.9.0-beta.2",
-    "cordova-plugin-nativestorage": "2.3.2",
-    "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-local-notification": "^0.9.0-beta.2",
+    "cordova-plugin-nativestorage": "^2.3.2",
+    "cordova-plugin-splashscreen": "^4.1.0",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-telerik-imagepicker": "2.3.2",
-    "cordova-plugin-whitelist": "^1.3.1",
+    "cordova-plugin-whitelist": "^1.3.3",
     "cordova-windows": "6.0.1",
     "firebase": "^4.12.1",
     "ionic": "^3.9.2",
@@ -84,7 +86,8 @@
       "cordova-plugin-local-notification": {},
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "GOOGLE_API_KEY_FOR_ANDROID": "{AIzaSyD_kbLrxzX8wOjIygvcdGa1CiMr9kuBnGw}",
-        "OKHTTP_VERSION": "3.12.0"
+        "OKHTTP_VERSION": "3.12.0",
+        "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-inappbrowser": {},
@@ -101,7 +104,9 @@
     },
     "platforms": [
       "windows",
-      "browser"
+      "browser",
+      "android",
+      "ios"
     ]
   }
 }

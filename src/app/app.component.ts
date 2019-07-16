@@ -6,6 +6,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import {Renderer2} from '@angular/core';
 import {TabsPage} from "../pages/tabs/tabs";
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ export class MyApp {
   rootPage : any = TabsPage;
   userId : number = 0;
 
-  constructor(platform: Platform, statusBar: StatusBar, private keyboard : Keyboard, private renderer2 : Renderer2, private apiProvider : ApiProvider, private nativeStorage : NativeStorage) {
+  constructor(platform: Platform, statusBar: StatusBar, private keyboard : Keyboard, private renderer2 : Renderer2, private apiProvider : ApiProvider, private nativeStorage : NativeStorage, private splash : SplashScreen) {
     platform.ready().then(() => {
       let html = document.getElementsByTagName('html').item(0);
 
@@ -27,6 +28,7 @@ export class MyApp {
       });
       statusBar.styleDefault();
       statusBar.backgroundColorByHexString("#D6D6D6");
+      this.splash.hide();
 
       this.nativeStorage.getItem('listooUserCredentials')
       .then(
