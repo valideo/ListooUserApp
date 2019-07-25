@@ -2,7 +2,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../../providers/api/api';
 import { TabsPage } from '../tabs/tabs';
 import { Component } from '@angular/core';
-import { NavController, Platform, ViewController } from 'ionic-angular';
+import {ModalController, NavController, Platform} from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { LoginPage } from '../login/login';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -17,23 +17,28 @@ export class HomePage {
   isLoggedIn : boolean = false;
   fbUserData : any = [];
 
-  constructor(public navCtrl: NavController, public nativeStorage : NativeStorage, public platform : Platform, public apiProvider : ApiProvider, public splash : SplashScreen, private fb: Facebook) {
+  constructor(public navCtrl: NavController, public nativeStorage : NativeStorage, public platform : Platform, public apiProvider : ApiProvider, public splash : SplashScreen, private fb: Facebook, private modalCtrl: ModalController) {
 
     this.platform.ready().then(() => {
 
     });
   }
 
-  ionViewDidLoad(){
-   // this.apiProvider.hideTabs();
+  ionViewWillEnter() {
+    if (this.apiProvider.token !== '')
+      this.navCtrl.pop()
   }
 
   goToLogin(){
-    this.navCtrl.push(LoginPage);
+    // this.navCtrl.push(LoginPage);
+    let loginModal = this.modalCtrl.create(LoginPage, null);
+    loginModal.present();
   }
 
-  goToRegister(){
-    this.navCtrl.push(RegisterPage);
+  goToRegister(data?: object){
+    // this.navCtrl.push(RegisterPage);
+    let loginModal = this.modalCtrl.create(RegisterPage, data === undefined ? null : data);
+    loginModal.present();
   }
 
   loginFb() {
@@ -54,7 +59,8 @@ export class HomePage {
       console.log("erreur");
       if(err.status == 404){
         console.log("erreur 404");
-        this.navCtrl.push(RegisterPage, {userData : userData})
+        this.goToRegister({userData: userData})
+
       }
       console.log(err);
     });

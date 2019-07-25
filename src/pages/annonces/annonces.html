@@ -8,50 +8,56 @@
 <ion-content padding>
   <h6>Establecimientos disponibles :</h6>
   <div class="filterContainer">
-    <table *ngIf="!showSB" >
-    <tr>
-      <td>
+    <table *ngIf="!showSB">
+      <tr>
+        <td>
           <ion-icon name="ios-search" (click)="showSearchBar()"></ion-icon>
-      </td>
-      <td>
+        </td>
+        <td>
           <ion-icon name="md-funnel" (click)="showFilters()"></ion-icon>
-      </td>
-      <td>
-          <ion-item><ion-toggle [(ngModel)]="paniersDispo" (ionChange)="paniersDispoChanged($event)" checked="false"></ion-toggle></ion-item>
-      </td>
-    </tr>
-    <tr>
-        <td>
-            <p>Buscar</p>
         </td>
         <td>
-            <p>Filtrar</p>
+          <ion-item>
+            <ion-toggle [(ngModel)]="paniersDispo" (ionChange)="paniersDispoChanged($event)"
+                        checked="false"></ion-toggle>
+          </ion-item>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Buscar</p>
         </td>
         <td>
-            <p>Canastas disponibles</p>
+          <p>Filtrar</p>
+        </td>
+        <td>
+          <p>Canastas disponibles</p>
         </td>
       </tr>
     </table>
-    <ion-searchbar *ngIf="showSB" 
-      [(ngModel)]="searchString"
-      [showCancelButton]="true"
-      cancelButtonText = "annuler"
-      (ionInput)="onInput($event)"
-      (ionCancel)="hideSearchBar($event)">
+    <ion-searchbar *ngIf="showSB"
+                   [(ngModel)]="searchString"
+                   [showCancelButton]="true"
+                   cancelButtonText="annuler"
+                   (ionInput)="onInput($event)"
+                   (ionCancel)="hideSearchBar($event)">
     </ion-searchbar>
   </div>
-  <p *ngIf="showNoPanierText" >{{noPanierText}}</p>
+  <p *ngIf="showNoPanierText">{{noPanierText}}</p>
   <ion-list>
     <ion-card *ngFor="let annonce of annoncesDetail" (click)="goToDetail(annonce)">
       <div class="imgWrap"><img src="http://api.listoo.co/uploads/{{annonce.piUrl}}"/></div>
       <div class="card-title">{{annonce.restoName}}</div>
       <div class="card-subtitle">{{annonce.restoType}}</div>
-      <div *ngIf="annonce.qtiteLeft > 0"  class="card-qtite">{{annonce.qtiteLeft}} paquetes</div>
-      <div *ngIf="annonce.qtiteLeft <= 0"  class="card-qtite zero">¡ Agotado !</div>
-      <div class="card-place"><ion-icon name="ios-pin-outline"></ion-icon> {{annonce.address}}</div>
+      <div *ngIf="annonce.qtiteLeft > 0" class="card-qtite">{{annonce.qtiteLeft}} paquetes</div>
+      <div *ngIf="annonce.qtiteLeft <= 0" class="card-qtite zero">¡ Agotado !</div>
+      <div class="card-place">
+        <ion-icon name="ios-pin-outline"></ion-icon>
+        {{annonce.address}}</div>
       <div class="card-reduction"><h2>-70%</h2></div>
-      <div class="card-price"><h2>$ {{annonce.initialPrice}}</h2><h2>$ {{annonce.price}}</h2></div>
+      <div class="card-price"><h2>$ {{annonce.initialPrice}}</h2>
+        <h2>$ {{annonce.price}}</h2></div>
     </ion-card>
-</ion-list>
+  </ion-list>
 
 </ion-content>

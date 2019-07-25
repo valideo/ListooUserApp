@@ -40,9 +40,11 @@ export class LoginPage {
     this.apiProvider.apiLogin(this.email, this.password).then(data =>{
       if(data['token'] != ""){
         this.apiProvider.token = data["token"];
-        this.navCtrl.popToRoot().then(() => {
-          this.navCtrl.setRoot(this.navCtrl.getActive().component)
-        });
+        this.navCtrl.pop()
+        this.navCtrl.pop()
+        // this.navCtrl.popToRoot().then(() => {
+        //   // this.navCtrl.setRoot(this.navCtrl.getActive().component)
+        // });
 
         this.nativeStorage.setItem('listooUserCredentials', {email: this.email, pass: this.password})
         .then(
