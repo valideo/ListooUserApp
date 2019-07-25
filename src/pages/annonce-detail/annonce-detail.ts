@@ -117,7 +117,7 @@ export class AnnonceDetailPage {
           this.apiProvider.apiCreateCommande(this.idAnnonce, this.qtiteSelected, today).then(data =>{
             console.log(data);
             console.log(new Date(this.startHour.getTime() - 600).toLocaleTimeString())
-           /* this.localNotifications.schedule([{
+            this.localNotifications.schedule([{
               id: 1,
               title : 'Su paquete Listoo.',
               text: 'Su pedido estará disponible en 1h30 !',
@@ -127,7 +127,7 @@ export class AnnonceDetailPage {
               title : 'Su paquete Listoo.',
               text: 'Su pedido estará disponible en 10 minutos !',
               trigger: {at: new Date(this.startHour.getTime() - 600)},
-            }]);*/
+            }]);
             let alert = this.alertCtrl.create({
               title: 'Reservación confirmada !',
               subTitle: '<p>'+this.horaires + "</p></br><p>"+ this.address+'</p>',
