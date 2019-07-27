@@ -7,23 +7,25 @@ import { Component } from '@angular/core';
 import { Events } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'tabs.html',
 })
 export class TabsPage {
-
   tab1Root = AnnoncesPage;
   tab2Root = CommandesPage;
   tab3Root = ProfilPage;
-  isBlured : string = "no";
+  isBlured: string = 'no';
 
-  constructor(public apiProvider : ApiProvider, public events : Events, public splash : SplashScreen) {
+  constructor(
+    public apiProvider: ApiProvider,
+    public events: Events,
+    public splash: SplashScreen
+  ) {
     events.subscribe('blurChange', () => {
       this.isBlured = this.apiProvider.isBlured;
     });
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.splash.hide();
   }
-
 }

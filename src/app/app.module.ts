@@ -23,32 +23,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { FCM } from '@ionic-native/fcm';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import {
+  LaunchNavigator,
+  LaunchNavigatorOptions,
+} from '@ionic-native/launch-navigator';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Facebook } from '@ionic-native/facebook';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
 
 @NgModule({
   declarations: [
     MyApp,
     CommandesPage,
     ProfilPage,
-    TabsPage, 
+    TabsPage,
     HomePage,
     RegisterPage,
     LoginPage,
     AnnoncesPage,
     AnnonceDetailPage,
     PwforgotPage,
-    ListooInfosPage
-    
+    ListooInfosPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{ scrollAssist: false, autoFocusAssist: false }),
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,13 +63,13 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     PwforgotPage,
     AnnoncesPage,
     AnnonceDetailPage,
-    ListooInfosPage
+    ListooInfosPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider, 
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ApiProvider,
     NativeStorage,
     FCM,
     LocalNotifications,
@@ -76,7 +77,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     FcmProvider,
     Keyboard,
     Facebook,
-    InAppBrowser
-  ]
+    InAppBrowser,
+  ],
 })
 export class AppModule {}

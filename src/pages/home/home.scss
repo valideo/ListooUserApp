@@ -1,43 +1,41 @@
 page-home {
-    text-align: center;
+  text-align: center;
 
-    ion-content{
-    background-image: url("../assets/imgs/listooBagBG.png");
+  ion-content {
+    background-image: url('../assets/imgs/listooBagBG.png');
     background-position: bottom; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: contain; /* Resize the background image to cover the entire container */
-    background-color : #f5f5f5 !important;
+    background-color: #f5f5f5 !important;
 
-    .scroll-content{
-        
-        padding : 0% 10% !important;
-        }
-}
-
-    .headerContainer > ion-icon{
-        //display: none;
+    .scroll-content {
+      padding: 0% 10% !important;
     }
+  }
 
-    p{
-        padding-top : 2vh;
-    }
+  .headerContainer > ion-icon {
+    //display: none;
+  }
 
-    .divider{
-        height: 1px;
-        width: 50%;
-        margin-left: 25%;
-        margin-top : 5vh;
-        margin-bottom : 5vh;
-        background-color : #aaa;
+  p {
+    padding-top: 2vh;
+  }
 
-    }
+  .divider {
+    height: 1px;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-color: #aaa;
+  }
 
-    .button{
-        background-color : map-get($colors, listooPink) !important;
-    }
+  .button {
+    background-color: map-get($colors, listooPink) !important;
+  }
 
-    #fbBtn{
-        background-color : #3A559F !important;
-        margin-top : 5vh;
-    }
+  #fbBtn {
+    background-color: #3a559f !important;
+    margin-top: 5vh;
+  }
 }

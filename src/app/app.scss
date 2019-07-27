@@ -1,298 +1,295 @@
 @import '../theme/fonts';
 
-p{
+p {
   font-family: 'Galano Grotesque light';
-  font-size : 1.5rem;
-  line-height : 2.2rem;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
 }
-span{
+span {
   font-family: 'Galano Grotesque regular';
-  font-size : 1.5rem;
+  font-size: 1.5rem;
 }
-h1, h2{
+h1,
+h2 {
   font-family: 'Galano Grotesque bold';
 }
-h1{
-  font-size : 2.5rem;
+h1 {
+  font-size: 2.5rem;
   line-height: 5rem;
-  padding-bottom : 5vh;
+  padding-bottom: 5vh;
 }
-button, ion-label, h5, h3, h4{
+button,
+ion-label,
+h5,
+h3,
+h4 {
   font-family: 'Galano Grotesque medium';
-  font-size : 2rem;
+  font-size: 2rem;
   text-transform: initial !important;
 }
-h6{
+h6 {
   font-family: 'Galano Grotesque regular';
-  font-size : 1.8rem;
-  line-height : 2.5rem;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
 }
 
 @include media-breakpoint-down(sm) {
-    .modal-config {
-        .modal-wrapper {
-          border-radius: 10px 10px 10px 10px;
-          overflow: hidden;
-          top: 25%;
-          left: 10%;
-          position: absolute;
-          width: 80%;
-          height: 45%;
-          border : solid 1px map-get($colors, listooPink);
-        }
-      }
+  .modal-config {
+    .modal-wrapper {
+      border-radius: 10px 10px 10px 10px;
+      overflow: hidden;
+      top: 25%;
+      left: 10%;
+      position: absolute;
+      width: 80%;
+      height: 45%;
+      border: solid 1px map-get($colors, listooPink);
     }
-    @keyframes fadeInBlur {
-        from {
-            -webkit-filter: blur(0px);
-            -moz-filter: blur(0px);
-            -o-filter: blur(0px);
-            -ms-filter: blur(0px);
-            filter: blur(0px);
-        }
-      
-        to {
-            -webkit-filter: blur(5px);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(5px);
-        }
-      }
-
-      @keyframes fadeOutBlur {
-        from {
-            -webkit-filter: blur(5px);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(5px);
-        }
-      
-        to {
-            -webkit-filter: blur(0px);
-            -moz-filter: blur(0px);
-            -o-filter: blur(0px);
-            -ms-filter: blur(0px);
-            filter: blur(0px);
-        }
-      }
-
-      .fadeInBlur {
-        -webkit-animation: fadeInBlur ease-in-out 1; 
-        animation: fadeInBlur ease-in-out 1;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-duration: 500ms;
-        animation-duration: 500ms;
-      } 
-
-      .fadeOutBlur {
-        -webkit-animation: fadeOutBlur ease-in-out 1; 
-        animation: fadeOutBlur ease-in-out 1;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-duration: 200ms;
-        animation-duration: 200ms;
-      } 
-
-      .button{
-        color: map-get($colors, light);
-        background-color : map-get($colors, listooGreen);
-        border-radius: 10px 10px 10px 10px;
-      }
-
-      .buttonInvert{
-        color: map-get($colors, listooGreen);
-        background-color : map-get($colors, light);
-      }
-
-      .swiper-pagination-bullet-active{
-        background : map-get($colors, listooGreen);
-      }
-
-      .tabbar{
-        background-color: white !important;
-        box-shadow: 0px -1px 10px 0px #ddd !important;
-      }
-
-      .tab-button{
-        position: relative;
-        width: 33%; /*Because you only have 3 elements (100 divided by 3)*/
-        float: left; /*To get them next to each other if all else fails*/
-        color :map-get($colors, listooPink);
-        background-color:  white !important;
-        display :inline-block;
-        min-height: 0px !important;
-        margin-top : 15px;
-        margin-bottom : 15px;
-        padding: 6px 0px !important;
-        border-radius: 20px !important;
-        margin-left: 5px;
-        margin-right: 5px;
-        -moz-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
-        -webkit-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
-        -o-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
-        box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
-        filter:progid:DXImageTransform.Microsoft.Shadow(color=#d6d6d6, Direction=180, Strength=10);
-        -moz-border-radius: 20px;
-        -webkit-border-radius: 20px;
-        font-size : 12px !important;
-
-        ion-icon{
-          color : map-get($colors, listooPink) !important;
-          display: inline-block !important;
-          vertical-align: middle;
-          font-size : 22px !important;
-          padding-right: 10px !important;
-        }
-        span{
-          display: inline-block !important;
-          vertical-align: middle
-        }
-      }
-
-      .tab-button[aria-selected=true]{
-        color :white !important;
-        background-color: map-get($colors, listooPink) !important;
-
-        ion-icon{
-          color : white !important;
-        }
-      }
-
-      a{
-        color : map-get($colors, listooPink) !important;
-        text-decoration: underline;
-    }
-
-    
-    .header-md >header-big >.headerContainer{
-      padding-top : 5vh !important;
-
-      ion-icon{
-          top: 8vh;
-      }
-
+  }
+}
+@keyframes fadeInBlur {
+  from {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
   }
 
-  .header-md >header-small >.headerContainer{
-    padding-top : 1vh !important;
+  to {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
 }
 
-  .header-md::after{
-    background: none;
+@keyframes fadeOutBlur {
+  from {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
   }
+
+  to {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+
+.fadeInBlur {
+  -webkit-animation: fadeInBlur ease-in-out 1;
+  animation: fadeInBlur ease-in-out 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+}
+
+.fadeOutBlur {
+  -webkit-animation: fadeOutBlur ease-in-out 1;
+  animation: fadeOutBlur ease-in-out 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+}
+
+.button {
+  color: map-get($colors, light);
+  background-color: map-get($colors, listooGreen);
+  border-radius: 10px 10px 10px 10px;
+}
+
+.buttonInvert {
+  color: map-get($colors, listooGreen);
+  background-color: map-get($colors, light);
+}
+
+.swiper-pagination-bullet-active {
+  background: map-get($colors, listooGreen);
+}
+
+.tabbar {
+  background-color: white !important;
+  box-shadow: 0px -1px 10px 0px #ddd !important;
+}
+
+.tab-button {
+  position: relative;
+  width: 33%; /*Because you only have 3 elements (100 divided by 3)*/
+  float: left; /*To get them next to each other if all else fails*/
+  color: map-get($colors, listooPink);
+  background-color: white !important;
+  display: inline-block;
+  min-height: 0px !important;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 6px 0px !important;
+  border-radius: 20px !important;
+  margin-left: 5px;
+  margin-right: 5px;
+  -moz-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+  -webkit-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+  -o-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+  box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#d6d6d6, Direction=180, Strength=10);
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  font-size: 12px !important;
+
+  ion-icon {
+    color: map-get($colors, listooPink) !important;
+    display: inline-block !important;
+    vertical-align: middle;
+    font-size: 22px !important;
+    padding-right: 10px !important;
+  }
+  span {
+    display: inline-block !important;
+    vertical-align: middle;
+  }
+}
+
+.tab-button[aria-selected='true'] {
+  color: white !important;
+  background-color: map-get($colors, listooPink) !important;
+
+  ion-icon {
+    color: white !important;
+  }
+}
+
+a {
+  color: map-get($colors, listooPink) !important;
+  text-decoration: underline;
+}
+
+.header-md > header-big > .headerContainer {
+  padding-top: 5vh !important;
+
+  ion-icon {
+    top: 8vh;
+  }
+}
+
+.header-md > header-small > .headerContainer {
+  padding-top: 1vh !important;
+}
+
+.header-md::after {
+  background: none;
+}
 
 * ::-webkit-scrollbar {
- display: none;
+  display: none;
 }
 
-ion-tabs[tabsLayout=icon-top] .has-icon .tab-button-text{
-  margin : 0px !important;
+ion-tabs[tabsLayout='icon-top'] .has-icon .tab-button-text {
+  margin: 0px !important;
 }
-ion-tabs .tab-button[aria-selected=true] .tab-button-text{
+ion-tabs .tab-button[aria-selected='true'] .tab-button-text {
   transition: none !important;
   transform: none !important;
 }
-ion-tabs .tab-button[aria-selected=true] .tab-button-icon{
+ion-tabs .tab-button[aria-selected='true'] .tab-button-icon {
   transform: none !important;
 }
 
-.select-icon{
+.select-icon {
   width: 2rem !important;
   height: 2rem !important;
   border-radius: 2rem !important;
   background-color: map-get($colors, listooPink) !important;
 
-  .select-icon-inner{
-    color : white !important
+  .select-icon-inner {
+    color: white !important;
   }
 }
 
-.shadowed{
+.shadowed {
   -moz-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
   -webkit-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
   -o-box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
   box-shadow: 0px 5px 7px 0px #d6d6d6 !important;
 }
 
-.alert-wrapper{
-  border-radius : 10px !important;
+.alert-wrapper {
+  border-radius: 10px !important;
 
-  .alert-message{
+  .alert-message {
     border-bottom: solid 0.4px map-get($colors, listooPink) !important;
   }
 
-  .alert-button-group{
+  .alert-button-group {
     text-align: center !important;
     display: inline-block !important;
-    
-    button{
+
+    button {
       display: initial !important;
 
-      span{
-        color : map-get($colors, listooPink) !important;
+      span {
+        color: map-get($colors, listooPink) !important;
       }
     }
   }
 }
-.alertOrderConfirm{
-  .alert-wrapper{
+.alertOrderConfirm {
+  .alert-wrapper {
     text-align: center;
 
-    .alert-head{
-        text-align: center;
+    .alert-head {
+      text-align: center;
 
-        .alert-title{
-          font-size : 1.8rem !important;
+      .alert-title {
+        font-size: 1.8rem !important;
+      }
+
+      .alert-sub-title {
+        padding: 30px 0px;
+
+        p {
+          line-height: 1.2rem !important;
+          margin: 0px !important;
         }
-
-        .alert-sub-title{
-
-          padding : 30px 0px;
-
-            p{
-                line-height : 1.2rem !important;
-                margin :0px !important
-            }
-        }
-
-
+      }
     }
 
-    .alert-message{
+    .alert-message {
       border-bottom: solid 0.4px map-get($colors, listooGreen) !important;
-      font-size : 2.5rem;
-      color : map-get($colors, listooGreen) !important;
+      font-size: 2.5rem;
+      color: map-get($colors, listooGreen) !important;
     }
 
-    .alert-button-group{
-
-      background-color : map-get($colors, listooGreen) !important;
-      button{
-
-        span{
-          color : white!important;
+    .alert-button-group {
+      background-color: map-get($colors, listooGreen) !important;
+      button {
+        span {
+          color: white !important;
         }
       }
     }
   }
 }
 
-.tab-badge{
+.tab-badge {
   right: 6% !important;
   font-size: 1rem !important;
   padding: 0px 4px !important;
 }
 
-ion-tabs.tabs-ios{
-
-  .tab-button{
-   padding : 0px !important;
+ion-tabs.tabs-ios {
+  .tab-button {
+    padding: 0px !important;
   }
 }
 
-.lastBtn{
+.lastBtn {
   margin-bottom: 3vh !important;
 }

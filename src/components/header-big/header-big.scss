@@ -1,21 +1,20 @@
 header-big {
-    text-align: center;
-    .headerContainer{
-        padding-top : 7vh;
-        display: inline-block;
-        position: relative;
+  text-align: center;
+  .headerContainer {
+    padding-top: 7vh;
+    display: inline-block;
+    position: relative;
 
-        img{
-            width: 50%;
-        }
-
-        ion-icon{
-            position: absolute;
-            left: 5%;
-            top: 11vh;
-            font-size: 25px;
-            color : map-get($colors, listooPink);
-        }
-
+    img {
+      width: 50%;
     }
+
+    ion-icon {
+      position: absolute;
+      left: 5%;
+      top: 11vh;
+      font-size: 25px;
+      color: map-get($colors, listooPink);
+    }
+  }
 }

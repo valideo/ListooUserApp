@@ -1,103 +1,102 @@
 page-commandes {
+  text-align: center;
 
-    text-align: center;
+  h1 {
+    padding-bottom: 0px;
+    line-height: 2rem;
+  }
 
-    h1{
-        padding-bottom: 0px;
-        line-height: 2rem;
+  ion-list {
+    padding-top: 20px;
+  }
+
+  ion-card {
+    text-align: left;
+    border-radius: 10px !important;
+    -webkit-box-shadow: 0px 6px 20px -5px rgba(0, 0, 0, 0.2) !important;
+    -moz-box-shadow: 0px 6px 20px -5px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0px 6px 20px -5px rgba(0, 0, 0, 0.2) !important;
+    margin-bottom: 6vh !important;
+
+    .picText {
+      margin-top: -110px;
+      z-index: 100;
+      position: absolute;
+      width: 85%;
+      margin-left: 20px;
+
+      p,
+      h1 {
+        color: white !important;
+        line-height: 1.2;
+      }
+      p {
+        line-height: 1.5;
+      }
+    }
+    .imgWrap {
+      position: relative;
+
+      img {
+        height: 130px;
+        object-fit: cover;
+      }
     }
 
-    ion-list{
-        padding-top: 20px;
+    .imgWrap:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99;
     }
 
-    ion-card{
-        text-align: left;
-        border-radius: 10px !important;
-        -webkit-box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.2) !important;
-        -moz-box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.2) !important;
-        box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.2) !important;
-        margin-bottom : 6vh !important;
-       
-        .picText{
-        margin-top: -110px;
-        z-index:100;
-        position: absolute;
-        width: 85%;
-        margin-left : 20px;
-        
-            p, h1{
-                color: white !important;
-                line-height: 1.2;
-            }
-            p{
-                line-height: 1.5;
-            }
-        }   
-        .imgWrap {
-            position:relative;
+    .bottomBar {
+      text-align: center;
+      position: relative;
+      vertical-align: middle;
+      padding: 10px 0px;
 
-            img{
-                height: 130px;
-                object-fit: cover;
-            }
+      div,
+      h2 {
+        display: inline-block;
+        font-size: 20px !important;
+      }
 
-          }
-          
-          .imgWrap:before {
-            content:"";
-            position: absolute;
-            top:0;
-            left:0;
-            height:100%;
-            width:100%;
-            background: rgba(0,0,0,0.5);
-            z-index:99;
-          }
+      ion-icon {
+        background-color: white;
+        font-size: 25px;
+        width: 25px;
+        height: 25px;
+        border-radius: 20px;
+        vertical-align: middle;
+        margin: 0px 10px;
+      }
 
-          .bottomBar{
-            text-align: center;
-            position: relative;
-            vertical-align: middle;
-            padding: 10px 0px;
+      p {
+        display: inline-block;
+        font-size: 12px !important;
+        text-align: center;
+        color: white;
+        vertical-align: middle;
+        font-size: 20px !important;
+      }
+    }
 
-            div, h2{
-                display: inline-block;
-                font-size: 20px !important;
-            }
-
-            ion-icon{
-                background-color : white;
-                font-size : 25px;
-                width: 25px;
-                height: 25px;
-                border-radius: 20px;
-                vertical-align: middle;
-                margin: 0px 10px;
-            }
-
-            p{
-                display: inline-block;
-                font-size : 12px !important;
-                text-align: center;
-                color : white;
-                vertical-align: middle;
-                font-size : 20px !important;
-            }
-        }
-
-        .recup{
-            color : white;
-            background-color: map-get($colors, listooGreen) !important;
-        }
-        .aRecup{
-            color :  map-get($colors, listooPink);
-            background-color: white;
-        }
-        .expire{
-            color : white;
-            background-color: grey !important;
-        }
-
-        }
+    .recup {
+      color: white;
+      background-color: map-get($colors, listooGreen) !important;
+    }
+    .aRecup {
+      color: map-get($colors, listooPink);
+      background-color: white;
+    }
+    .expire {
+      color: white;
+      background-color: grey !important;
+    }
+  }
 }

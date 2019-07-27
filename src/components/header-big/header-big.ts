@@ -3,15 +3,12 @@ import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'header-big',
-  templateUrl: 'header-big.html'
+  templateUrl: 'header-big.html',
 })
 export class HeaderBigComponent {
+  constructor(public navCtrl: NavController) {}
 
-  constructor(public navCtrl : NavController ) {
-  }
-
-  goPrev(){
+  goPrev() {
     this.navCtrl.pop();
   }
-
 }

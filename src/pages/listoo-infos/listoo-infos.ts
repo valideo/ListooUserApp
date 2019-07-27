@@ -7,23 +7,25 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   templateUrl: 'listoo-infos.html',
 })
 export class ListooInfosPage {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private iab: InAppBrowser
+  ) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser) {
-
+  openPrivacy() {
+    const browser = this.iab.create(
+      'https://www.listoo.co/politicas-de-confidencialidades'
+    );
   }
-
-  openPrivacy(){
-    const browser = this.iab.create('https://www.listoo.co/politicas-de-confidencialidades');
-  }
-  openCGU(){
+  openCGU() {
     const browser = this.iab.create('https://www.listoo.co/cgu');
   }
-  openLegale(){
+  openLegale() {
     const browser = this.iab.create('https://www.listoo.co/noticias-legales');
   }
 
-  goBack(){
+  goBack() {
     this.navCtrl.pop();
   }
-
 }
