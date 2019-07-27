@@ -11,7 +11,7 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "browser": "ionic cordova run browser",
-    "android": "ionic cordova run android --livereload"
+    "android": "ionic cordova run android --livereload",
     "prettier:list": "prettier --list-different \"./{e2e,src}/**/*.{scss,ts}\" || ECHO .",
     "prettier:write": "prettier --write \"./{e2e,src}/**/*.{scss,ts}\"",
     "tslint-check": "tslint-config-prettier-check ./tslint.json"
