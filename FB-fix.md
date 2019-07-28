@@ -1,7 +1,8 @@
 # Facebook login fix
 
 ### Init Prettier
-* Pull the projet source `git checkout master` & `git pull`
+* Pull the projet source
+* Checkout branch `git checkout feat/prettier-config`
 * Install prettier, run 
 ```
 npm install
