@@ -44,10 +44,6 @@ export class LoginPage {
       if (data['token'] != '') {
         this.apiProvider.token = data['token'];
         this.navCtrl.pop();
-        this.navCtrl.pop();
-        // this.navCtrl.popToRoot().then(() => {
-        //   // this.navCtrl.setRoot(this.navCtrl.getActive().component)
-        // });
 
         this.nativeStorage
           .setItem('listooUserCredentials', {
