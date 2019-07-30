@@ -75,7 +75,7 @@ export class HomePage {
     this.apiProvider.apiLoginFB(userData['email']).then(
       (data) => {
         console.log(data);
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.pop();
       },
       (err) => {
         console.log('erreur');

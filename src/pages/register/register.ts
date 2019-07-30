@@ -80,7 +80,6 @@ export class RegisterPage {
     this.apiProvider.apiLogin(this.email, this.password).then((data) => {
       if (data['token'] != '') {
         this.apiProvider.token = data['token'];
-        this.navCtrl.setRoot(TabsPage);
         this.nativeStorage
           .setItem('listooUserCredentials', {
             email: this.email,
@@ -90,6 +89,7 @@ export class RegisterPage {
             () => console.log('Stored item!'),
             (error) => console.error('Error storing item', error)
           );
+          this.navCtrl.pop();
       }
     });
   }
