@@ -16,7 +16,7 @@ ionic cordova plugin rm cordova-plugin-facebook4
 
 * Re-install it with the following `API_ID` and `APP_NAME` variables
 ```
-cordova plugin add cordova-plugin-facebook4 --save --variable APP_ID="505378480268670" --variable APP_NAME="Listoo"
+cordova plugin add cordova-plugin-facebook4@4.2.1 --save --variable APP_ID="505378480268670" --variable APP_NAME="Listoo"
 ```
 
 * Genere a key hash for Facebook's application

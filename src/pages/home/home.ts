@@ -76,6 +76,7 @@ export class HomePage {
       (data) => {
         console.log(data);
         this.navCtrl.pop();
+        this.navCtrl.parent.select(2);
       },
       (err) => {
         console.log('erreur');
